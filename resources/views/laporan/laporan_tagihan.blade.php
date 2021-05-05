@@ -195,7 +195,7 @@
             }
             //window.open('https://yoururl.com', '_blank');
             var data = filter_tagihan+"/"+filter_tgl+"/"+filter_search;
-             alert(filter_tagihan+"|"+filter_tgl+"|"+filter_search);
+            //alert(filter_tagihan+"|"+filter_tgl+"|"+filter_search);
             window.location.href = "{{ url('laporan/cetak_laporan_transaksi_tagihan/filter_tagihan/filter_tgl/filter_search') }}".replace('filter_tagihan',filter_tagihan).replace('filter_tgl',filter_tgl).replace('filter_search',filter_search);
           }
         });

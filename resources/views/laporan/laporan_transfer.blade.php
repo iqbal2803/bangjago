@@ -195,7 +195,7 @@
             }
             //window.open('https://yoururl.com', '_blank');
             var data = filter_bank+"/"+filter_tgl+"/"+filter_search;
-             alert(filter_bank+"|"+filter_tgl+"|"+filter_search);
+            //alert(filter_bank+"|"+filter_tgl+"|"+filter_search);
             window.location.href = "{{ url('laporan/cetak_laporan_transaksi_transfer/filter_bank/filter_tgl/filter_search') }}".replace('filter_bank',filter_bank).replace('filter_tgl',filter_tgl).replace('filter_search',filter_search);
           }
         });
