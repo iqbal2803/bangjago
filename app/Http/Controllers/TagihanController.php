@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AppHelper;
-use App\Models\tagihan;
+use App\Models\Tagihan;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use CoreComponentRepository;
