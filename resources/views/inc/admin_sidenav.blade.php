@@ -85,7 +85,7 @@
             </a>
           </li>
           @endif
-          @if(in_array('4', json_decode(Auth::user()->role->permission)))
+          @if(Auth::user()->role->permission=='Admin Cabang' && in_array('4', json_decode(Auth::user()->role->permission)))
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-database"></i>
