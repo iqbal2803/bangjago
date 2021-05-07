@@ -17,7 +17,7 @@ class TagihanController extends Controller
      */
     public function index()
     {
-        $tagihan = tagihan::all();
+        $tagihan = Tagihan::all();
         $data['tagihans'] = $tagihan;
         return view('tagihan.index',$data);
     }
@@ -35,7 +35,7 @@ class TagihanController extends Controller
      */
     public function store_tagihan(Request $request)
     {
-        $tagihan = new tagihan;
+        $tagihan = new Tagihan;
 
         $imgName="";
         if ($request->hasFile('logo_tagihan')) {
@@ -57,7 +57,7 @@ class TagihanController extends Controller
 
     public function edit_tagihan($id)
     {
-        $data['tagihan'] = tagihan::where('id',$id)->first();
+        $data['tagihan'] = Tagihan::where('id',$id)->first();
         return view('tagihan.edit_tagihan',$data);
     }
 
@@ -69,7 +69,7 @@ class TagihanController extends Controller
      */
     public function update_tagihan(Request $request)
     {
-        $tagihan = tagihan::where('id',$request->id_tagihan)->first();
+        $tagihan = Tagihan::where('id',$request->id_tagihan)->first();
 
         $imgName="";
         if ($request->hasFile('logo_tagihan')) {
