@@ -25,21 +25,33 @@ class LaporanController extends Controller
     public function transaksi_transfer()
     {
         $data['databank'] = Bank::all();
+        if(Auth::user()->role->permission=='Admin Cabang'){
         $data['transaksi'] = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','transfer')->where('status','Selesai')->get();
+        }else{
+        $data['transaksi']=[];
+        }
         return view('laporan.laporan_transfer',$data);
     }
 
     public function transaksi_tarik_tunai()
     {
         $data['databank'] = Bank::all();
+        if(Auth::user()->role->permission=='Admin Cabang'){
         $data['transaksi'] = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','tarik tunai')->where('status','Selesai')->get();
+        }else{
+        $data['transaksi']=[];
+        }
         return view('laporan.laporan_tarik_tunai',$data);
     }
 
     public function transaksi_tagihan()
     {
         $data['datatagihan'] = Tagihan::all();
+        if(Auth::user()->role->permission=='Admin Cabang'){
         $data['transaksi'] = Transaksi_Tagihan::where('cabang_id',Auth::user()->cabang->id)->where('status','Selesai')->get();
+        }else{
+        $data['transaksi']=[];
+        }
         return view('laporan.laporan_tagihan',$data);
     }
 

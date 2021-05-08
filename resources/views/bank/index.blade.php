@@ -68,16 +68,6 @@
                   @php $no++; @endphp
                   @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Logo</th>
-                    <th>Nama Bank</th>
-                    <th>Biaya Transfer</th>
-                    <th>Biaya Tarik Tunai</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

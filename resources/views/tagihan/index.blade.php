@@ -39,8 +39,8 @@
                   <tr>
                     <th>No</th>
                     <th>Logo</th>
-                    <th>Nama tagihan</th>
-                    <th>Biaya Tarik Tunai</th>
+                    <th>Nama Tagihan</th>
+                    <th>Biaya Tagihan</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
@@ -66,15 +66,6 @@
                   @php $no++; @endphp
                   @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Logo</th>
-                    <th>Nama tagihan</th>
-                    <th>Biaya Tarik Tunai</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

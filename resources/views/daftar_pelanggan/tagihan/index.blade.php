@@ -64,15 +64,6 @@
                   @php $no++; @endphp
                   @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Jenis Tagihan</th>
-                    <th>ID Pelanggan</th>
-                    <th>Pemilik Tagihan</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->
