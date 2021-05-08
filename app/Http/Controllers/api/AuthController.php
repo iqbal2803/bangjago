@@ -6,6 +6,8 @@ use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
@@ -45,7 +47,13 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        $user = JWTAuth::parseToken()->authenticate();
+        return response()->json([
+            auth()->user(),
+            "role" =>$user->role,
+            "cabang" =>$user->cabang
+        ]
+        );
     }
 
     /**

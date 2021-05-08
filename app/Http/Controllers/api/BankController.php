@@ -7,9 +7,8 @@ use App\AppHelper;
 use App\Models\Bank;
 use App\Models\BankPelanggan;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
-// use JWTAuth;
-// use Tymon\JWTAuth\Exceptions\JWTException;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 use CoreComponentRepository;
 
 class BankController extends Controller
@@ -53,7 +52,7 @@ class BankController extends Controller
             }
             $nomor_rekening = $request->get('nomor_rekening');
 
-            $bank = BankPelanggan::where('nomor_rekening',$nomor_rekening)->first;
+            $bank = BankPelanggan::where('nomor_rekening',$nomor_rekening)->first();
 
             return response()->json([
                 "error" => false,
@@ -72,5 +71,5 @@ class BankController extends Controller
             return response()->json(['token_absent'], $e->getStatusCode());
         }
     }
-    
+
 }

@@ -39,7 +39,7 @@
                 <form role="form">
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-sm-1">
+                      <div class="col-sm-2">
                         <!-- select -->
                         <div class="form-group">
                           <label>Provinsi</label>
@@ -52,7 +52,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-1">
+                      <div class="col-sm-2">
                         <!-- select -->
                         <div class="form-group">
                           <label>Kota</label>
@@ -65,7 +65,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-1">
+                      <div class="col-sm-2">
                         <!-- select -->
                         <div class="form-group">
                           <label>Nama Cabang</label>
@@ -76,7 +76,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-1">
+                      <div class="col-sm-2">
                         <!-- select -->
                         <div class="form-group">
                           <label>Alamat</label>
@@ -87,7 +87,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-1">
+                      <div class="col-sm-2">
                         <!-- select -->
                         <div class="form-group">
                           <label>Penanggung Jawab</label>
@@ -98,7 +98,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-1">
+                      <div class="col-sm-2">
                         <!-- select -->
                         <div class="form-group">
                           <label>No Telepon PIC</label>
@@ -109,7 +109,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-1">
+                      <div class="col-sm-2">
                         <!-- select -->
                         <div class="form-group">
                           <label>Jam Operasional</label>
@@ -120,7 +120,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-1">
+                      <div class="col-sm-2">
                         <!-- select -->
                         <div class="form-group">
                           <label>Pilih User</label>
@@ -129,7 +129,7 @@
                       <div class="col-sm-2">
                         <select class="form-control" name="staff_id" id="staff_id">
                           @foreach ($datauserscabang as $data)
-                          <option value="{{$data->id}}">{{$data->nama}}</option>
+                          <option value="{{$data->id}}">{{$data->name}}</option>
                           @endforeach
                         </select>
                       </div>

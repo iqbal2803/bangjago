@@ -72,17 +72,6 @@
                   @php $no++; @endphp
                   @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Nama Cabang</th>
-                    <th>Alamat</th>
-                    <th>Penanggung Jawab</th>
-                    <th>No. Telepon PIC</th>
-                    <th>Jam Operasional</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

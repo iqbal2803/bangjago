@@ -23,7 +23,7 @@ Route::group(['namespace' => 'api'], function () {
 		Route::post('login', 'AuthController@login');
 	    Route::post('logout', 'AuthController@logout');
 	    Route::post('refresh', 'AuthController@refresh');
-	    Route::post('me', 'AuthController@me');
+	    Route::get('me', 'AuthController@me');
 	});
 
 	Route::group(['middleware' => 'jwt.verify'], function () {
@@ -37,14 +37,15 @@ Route::group(['namespace' => 'api'], function () {
 		});
 
 		Route::group(['prefix' => 'registrasi'], function () {
-			Route::post('bank_pelanggan', 'TagihanController@createBankPelanggan');
-			Route::post('tagihan_pelanggan', 'TagihanController@createTagihanPelanggan');
+			Route::post('bank_pelanggan', 'RegistrasiController@createBankPelanggan');
+			Route::post('tagihan_pelanggan', 'RegistrasiController@createTagihanPelanggan');
 		});
 
 		Route::group(['prefix' => 'transaksi'], function () {
-			Route::post('transfer_uang', 'TagihanController@createTransaksiTransferUang');
-			Route::post('tarik_tunai', 'TagihanController@createTransaksiPenarikanTunai');
-			Route::post('bayar_tagihan', 'TagihanController@createTransaksiBayarTagihan');
+			Route::get('getNomorTransaksi', 'TransaksiController@getNomorTransaksi');
+			Route::post('transfer_uang', 'TransaksiController@createTransaksiTransferUang');
+			Route::post('tarik_tunai', 'TransaksiController@createTransaksiPenarikanTunai');
+			Route::post('bayar_tagihan', 'TransaksiController@createTransaksiBayarTagihan');
 		});
 	});
 

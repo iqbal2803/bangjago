@@ -81,20 +81,6 @@
                   @php $no++; @endphp
                   @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Nomor Pesanan</th>
-                    <th>Tanggal</th>
-                    <th>Nama Bank</th>
-                    <th>Nomor Rekening</th>
-                    <th>Nama Pemilik Rekening</th>
-                    <th>Nominal Tarik Tunai</th>
-                    <th>Biaya Ongkos</th>
-                    <th>Total</th>
-                    <th>Status</th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

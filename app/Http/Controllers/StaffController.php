@@ -88,7 +88,7 @@ class StaffController extends Controller
 
     public function hapus_staff($id)
     {
-        if(Staff::destroy($id)){
+        if(User::destroy($id)){
             return redirect('staff/daftar_staff')->with('message', 'Staff has been deleted successfully!');
         }else{
             return redirect('staff/daftar_staff')->with('danger', 'Something went wrong!');

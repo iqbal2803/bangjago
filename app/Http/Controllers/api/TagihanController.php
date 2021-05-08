@@ -8,8 +8,8 @@ use App\Models\Tagihan;
 use App\Models\TagihanPelanggan;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
-// use JWTAuth;
-// use Tymon\JWTAuth\Exceptions\JWTException;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 use CoreComponentRepository;
 
 class TagihanController extends Controller
