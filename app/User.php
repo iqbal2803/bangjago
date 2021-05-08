@@ -11,8 +11,8 @@ use App\Models\Cabang;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable;
-    protected $appends = ['role','cabang'];
+    // use Notifiable;
+    // protected $appends = ['role','cabang'];
 
     /**
      * The attributes that are mass assignable.
@@ -73,13 +73,13 @@ class User extends Authenticatable implements JWTSubject
     return $this->hasOne(Cabang::class,'users_id');
     }
 
-    public function getRoleAttribute()
-    {
-        return $this->belongsTo(Role::class);
-    }
+    // public function getRoleAttribute()
+    // {
+    //     return $this->belongsTo(Role::class);
+    // }
 
-    public function getCabangAttribute()
-    {
-        return $this->hasOne(Cabang::class,'users_id');
-    }
+    // public function getCabangAttribute()
+    // {
+    //     return $this->hasOne(Cabang::class,'users_id');
+    // }
 }
