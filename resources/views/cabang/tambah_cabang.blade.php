@@ -128,7 +128,7 @@
                       </div>
                       <div class="col-sm-2">
                         <select class="form-control" name="staff_id" id="staff_id">
-                          @foreach ($datastaffcabang as $data)
+                          @foreach ($datauserscabang as $data)
                           <option value="{{$data->id}}">{{$data->nama}}</option>
                           @endforeach
                         </select>

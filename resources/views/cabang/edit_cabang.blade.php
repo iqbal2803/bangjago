@@ -130,7 +130,7 @@
                       </div>
                       <div class="col-sm-2">
                         <select class="form-control" name="staff_id" id="staff_id">
-                          @foreach ($datastaffcabang as $data)
+                          @foreach ($datauserscabang as $data)
                           <option value="{{$data->id}}" @if ($cabang->users_id==$data->id) selected @endif >{{$data->nama}}</option>
                           @endforeach
                         </select>
