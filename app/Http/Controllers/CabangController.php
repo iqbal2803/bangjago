@@ -136,8 +136,10 @@ class CabangController extends Controller
         try {
 
             $url = "city";
-            if ($request->id_provinsi) {
+            if ($request->id_provinsi=="") {
                 
+                $url = $url."?province=1";
+            }else{
                 $url = $url."?province=".$request->id_provinsi;
             }
 

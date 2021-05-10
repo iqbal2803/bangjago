@@ -186,6 +186,7 @@
 
            }
        });
+
     }
 
     function getKota(){
@@ -225,6 +226,7 @@
 
 $(document).ready(function(){
     getProvinsi();
+    getKota();
     $('#provinsi').on('change', function() {
         var data = $('#provinsi').select2('data');
         $('input[name="province"]').val(data[0].text);

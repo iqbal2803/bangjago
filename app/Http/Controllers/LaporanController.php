@@ -25,7 +25,7 @@ class LaporanController extends Controller
     public function transaksi_transfer()
     {
         $data['databank'] = Bank::all();
-        if(Auth::user()->role->permission=='Admin Cabang'){
+        if(Auth::user()->role->nama_role=='Admin Cabang'){
         $data['transaksi'] = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','transfer')->where('status','Selesai')->get();
         }else{
         $data['transaksi']=[];
@@ -36,7 +36,7 @@ class LaporanController extends Controller
     public function transaksi_tarik_tunai()
     {
         $data['databank'] = Bank::all();
-        if(Auth::user()->role->permission=='Admin Cabang'){
+        if(Auth::user()->role->nama_role=='Admin Cabang'){
         $data['transaksi'] = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','tarik tunai')->where('status','Selesai')->get();
         }else{
         $data['transaksi']=[];
@@ -47,7 +47,7 @@ class LaporanController extends Controller
     public function transaksi_tagihan()
     {
         $data['datatagihan'] = Tagihan::all();
-        if(Auth::user()->role->permission=='Admin Cabang'){
+        if(Auth::user()->role->nama_role=='Admin Cabang'){
         $data['transaksi'] = Transaksi_Tagihan::where('cabang_id',Auth::user()->cabang->id)->where('status','Selesai')->get();
         }else{
         $data['transaksi']=[];

@@ -52,7 +52,7 @@ class TransaksiController extends Controller
         $bank->status =  "Selesai";
         $bank->save();
         
-        return redirect('transaksi/riwayat_transfer')->with('message', 'Status has been updated successfully!');
+        return redirect('transaksi/riwayat_transfer/'.$bank->cabang_id)->with('message', 'Status has been updated successfully!');
     }
 
     public function update_status_tarik_tunai($nomor_transaksi)
@@ -61,7 +61,7 @@ class TransaksiController extends Controller
         $bank->status =  "Selesai";
         $bank->save();
         
-        return redirect('transaksi/riwayat_tarik_tunai')->with('message', 'Status has been updated successfully!');
+        return redirect('transaksi/riwayat_tarik_tunai/'.$bank->cabang_id)->with('message', 'Status has been updated successfully!');
     }
 
     public function update_status_tagihan($nomor_transaksi)
@@ -70,7 +70,7 @@ class TransaksiController extends Controller
         $bank->status =  "Selesai";
         $bank->save();
         
-        return redirect('transaksi/riwayat_tagihan')->with('message', 'Status has been updated successfully!');
+        return redirect('transaksi/riwayat_tagihan/'.$bank->cabang_id)->with('message', 'Status has been updated successfully!');
     }
 
 
@@ -159,7 +159,7 @@ class TransaksiController extends Controller
 
         }
 
-        $data['cabang']=Cabang::where('cabang_id',$cabang_id)->first();
+        $data['cabang']=Cabang::where('id',$cabang_id)->first();
         $data['transaksi'] = $transaksi->get();
 
         $pdf = PDF::setOptions([
@@ -237,7 +237,7 @@ class TransaksiController extends Controller
             });
         }
 
-        $data['cabang']=Cabang::where('cabang_id',$cabang_id)->first();
+        $data['cabang']=Cabang::where('id',$cabang_id)->first();
         $data['transaksi'] = $transaksi->get();
 
         $pdf = PDF::setOptions([
@@ -313,7 +313,7 @@ class TransaksiController extends Controller
             });
         }
 
-        $data['cabang']=Cabang::where('cabang_id',$cabang_id)->first();
+        $data['cabang']=Cabang::where('id',$cabang_id)->first();
         $data['transaksi'] = $transaksi->get();
 
         $pdf = PDF::setOptions([

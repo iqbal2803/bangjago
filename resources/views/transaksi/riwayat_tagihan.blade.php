@@ -53,7 +53,7 @@
             </li>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <li class="nav-item">
-              <button type="submit" id="btn_cetak" class="btn btn-primary">Cetak Laporan</button>
+              @if(Auth::user()->role->nama_role=='Pemilik')<button type="submit" id="btn_cetak" class="btn btn-primary">Cetak Laporan</button>@endif
             </li>
           </ul>
         </div>
@@ -107,21 +107,6 @@
                   @php $no++; @endphp
                   @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Nomor Pesanan</th>
-                    <th>Tanggal</th>
-                    <th>Jenis Tagihan</th>
-                    <th>ID Pelanggan</th>
-                    <th>Nama Pemilik ID</th>
-                    <th>Nominal Tagihan</th>
-                    <th>Biaya Ongkos</th>
-                    <th>Total</th>
-                    <th>Status</th>
-                     @if(Auth::user()->role->nama_role=='Admin Cabang')<th>Aksi</th>@endif
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->
