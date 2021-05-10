@@ -94,11 +94,11 @@
                         <span class="sr-only">Toggle Dropdown</span>
                       </button>
                       <div class="dropdown-menu" role="menu">
-                        <a class="dropdown-item" href="{{url('transaksi/update_status_tarik_tunai/'.$data->nomor_transaksi)}}">Ganti Status</a>
-                        <a class="dropdown-item" href="{{url('transaksi/cetak_invoice_tarik_tunai/'.$data->nomor_transaksi)}}">Cetak Invoice</a>
+                        <a class="dropdown-item" href="{{url('transaksi/update_status_transfer/'.$data->nomor_transaksi)}}">Ganti Status</a>
+                        <a class="dropdown-item" href="{{url('transaksi/cetak_invoice_transfer/'.$data->nomor_transaksi)}}">Cetak Invoice</a>
                       </div>
                       @else
-                      <a href="{{url('transaksi.cetak_invoice_tarik_tunai/'.$data->nomor_pesanan)}}"><button class="btn btn-info btn-flat">Cetak Invoice</button></a>
+                      <a href="{{url('transaksi.cetak_invoice_transfer/'.$data->nomor_pesanan)}}"><button class="btn btn-info btn-flat">Cetak Invoice</button></a>
                       @endif
                     </td>
                     @endif
