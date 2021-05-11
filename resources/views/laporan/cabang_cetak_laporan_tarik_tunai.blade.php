@@ -13,6 +13,10 @@
         text-align: center;
       border: 1px solid black;
     }
+    #example2 th{
+        text-align: center;
+      border: 1px solid black;
+    }
 
     #example2 {
       width: 100%;
@@ -31,8 +35,8 @@
                     <td rowspan="2" width="15%">
                         <img loading="lazy"  src="{{ asset('dist/img/logo_bangjago.jpg') }}" height="40" style="display:inline-block;">
                     </td>
-                    <td rowspan="2" width="60%" style="font-size: 2.5rem;" class="strong"><center>Laporan Transaksi Tarik Tunai</center></td>
-                    <td rowspan="2" width="15%">
+                    <td rowspan="2" width="50%" style="font-size: 1.5rem;" class="strong"><center>Laporan Transaksi Tarik Tunai</center></td>
+                    <td rowspan="2" width="25%">
                         <b>Cabang :</b> {{$cabang->nama_cabang}}<br>
                         <b>Tanggal :</b> 03-05-2021
                     </td>
@@ -53,7 +57,6 @@
                     <th>Nominal Tarik Tunai</th>
                     <th>Biaya Ongkos</th>
                     <th>Total</th>
-                    <th>Status</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -69,7 +72,6 @@
                     <td>{{ $data->nominal_transfer}}</td>
                     <td>{{ $data->biaya_ongkos}}</td>
                     <td>{{ $data->total}}</td>
-                    <td>{{ $data->status}}</td>
                   </tr>
                   @php $no++; @endphp
                   @endforeach

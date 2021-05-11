@@ -108,7 +108,7 @@ class LaporanController extends Controller
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
                         'logOutputFile' => storage_path('logs/log.htm'),
                         'tempDir' => storage_path('logs/')
-                    ])->loadView('laporan.cabang_cetak_laporan_transfer',$data);
+                    ])->loadView('laporan.cabang_cetak_laporan_transfer',$data)->setPaper('a4', 'landscape');
         
         return $pdf->download('Cetak Laporan Transfer.pdf');
     }
@@ -164,7 +164,7 @@ class LaporanController extends Controller
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
                         'logOutputFile' => storage_path('logs/log.htm'),
                         'tempDir' => storage_path('logs/')
-                    ])->loadView('laporan.cabang_cetak_laporan_tarik_tunai',$data);
+                    ])->loadView('laporan.cabang_cetak_laporan_tarik_tunai',$data)->setPaper('a4', 'landscape');
         
         return $pdf->download('Cetak Laporan Tarik Tunai.pdf');
     }
@@ -216,7 +216,7 @@ class LaporanController extends Controller
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
                         'logOutputFile' => storage_path('logs/log.htm'),
                         'tempDir' => storage_path('logs/')
-                    ])->loadView('laporan.cabang_cetak_laporan_tagihan',$data);
+                    ])->loadView('laporan.cabang_cetak_laporan_tagihan',$data)->setPaper('a4', 'landscape');
         
         return $pdf->download('Cetak Laporan Tagihan.pdf');
     }

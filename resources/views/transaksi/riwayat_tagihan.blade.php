@@ -45,7 +45,7 @@
             </li>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <li class="nav-item">
-            <select class="form-control filter-bank" data-column="9"  name="filter_status" id="filter_status">
+            <select class="form-control filter-status" data-column="9"  name="filter_status" id="filter_status">
                 <option value="">Semua</option>
                 <option value="Pending">Pending</option>
                 <option value="Selesai">Selesai</option>
@@ -58,7 +58,7 @@
           </ul>
         </div>
         <div class="card-body">
-                <table id="example1" class="table table-striped">
+                <table id="example2" class="table table-striped">
                   <thead>
                   <tr>
                     <th>No</th>
@@ -160,7 +160,7 @@
         var filter_status = $('#filter_status');
 
 
-        $('.filter-bank').change(function () {
+        $('.filter-tagihan').change(function () {
             table.column( filter_tagihan.data('column'))
             .search( filter_tagihan.val() )
             .draw();
