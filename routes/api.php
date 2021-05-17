@@ -30,10 +30,12 @@ Route::group(['namespace' => 'api'], function () {
 		
 		Route::group(['prefix' => 'bank'], function () {
 			Route::get('getBank', 'BankController@getBank');
+			Route::get('getBankPelanggan', 'BankController@getBankPelanggan');
 		});
 
 		Route::group(['prefix' => 'tagihan'], function () {
 			Route::get('getTagihan', 'TagihanController@getTagihan');
+			Route::get('getTagihanPelanggan', 'TagihanController@getTagihanPelanggan');
 		});
 
 		Route::group(['prefix' => 'registrasi'], function () {

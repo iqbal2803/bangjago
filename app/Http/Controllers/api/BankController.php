@@ -5,7 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\AppHelper;
 use App\Models\Bank;
-use App\Models\BankPelanggan;
+use App\Models\Bank_Pelanggan;
 use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -58,23 +58,46 @@ class BankController extends Controller
         
     }
 
-    public function getBankPelanggan(Request $request)
+    public function getBankPelanggan()
     {
         try {
 
             if (!$user = JWTAuth::parseToken()->authenticate()) {
                 return response()->json(['user_not_found'], 404);
             }
-            $nomor_rekening = $request->get('nomor_rekening');
+            
+            $bank = Bank_Pelanggan::join('bank as b', 'bank_pelanggan.id_bank', '=', 'b.id')
+                                ->select(
+                                'bank_pelanggan.*',
+                                'b.nama_bank',
+                                'b.logo_bank',
+                                'b.biaya_transfer',
+                                'b.biaya_tarik_tunai',
+                                )
+                                ->get();
+            $arrResult = [];
 
-            $bank = BankPelanggan::where('nomor_rekening',$nomor_rekening)->first();
+            foreach ($bank as $item) {
+                $arrayToPush = [
+                    'id' => $item->id,
+                    'nama_bank' => $item->nama_bank,
+                    'logo_bank' => asset('assets_admin/images/bank/'.$item->logo_bank),
+                    'biaya_transfer' => $item->biaya_transfer,
+                    'biaya_tarik_tunai' => $item->biaya_tarik_tunai,
+                    'created_at' => $item->created_at,
+                    'updated_at' => $item->updated_at
+                ];
+
+                array_push($arrResult, $arrayToPush);
+            }
 
             return response()->json([
                 "error" => false,
-                "nomor_rekening" => $bank->nomor_rekening,
-                "nama_pemilik" => $bank->nama_pemilik
-                
+                "data" => [
+                    "bank" => $arrResult,
+                ]
             ]);
+
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 
             return response()->json(['token_expired'], $e->getStatusCode());

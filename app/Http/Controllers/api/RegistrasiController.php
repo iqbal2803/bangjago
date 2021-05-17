@@ -32,6 +32,13 @@ class RegistrasiController extends Controller
             //         ]
             //     ], 400);
             // }
+            $bank=Bank_Pelanggan::where('nomor_rekening',$request->get('nomor_rekening'))->first();
+            if($bank!=null || $bank!=""){
+                return response()->json([
+                "error" => false,
+                "message" => "Nomor Rekening Sudah Pernah Diregistrasi"
+                ]);
+            }
 
             $data = [
             'id_bank' => $request->get('id_bank'),
@@ -76,6 +83,15 @@ class RegistrasiController extends Controller
             //         ]
             //     ], 400);
             // }
+
+            $tagihan=Tagihan_Pelanggan::where('nomor_id',$request->get('nomor_id'))->first();
+            if($tagihan!=null || $tagihan!=""){
+                return response()->json([
+                "error" => false,
+                "message" => "Nomor ID Sudah Pernah Diregistrasi"
+                ]);
+            }
+
 
             $data = [
             'id_jenis_tagihan' => $request->get('id_jenis_tagihan'),
