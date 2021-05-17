@@ -70,6 +70,7 @@ class BankController extends Controller
                                 ->select(
                                 'bank_pelanggan.*',
                                 'b.nama_bank',
+                                'b.nomor_rekening',
                                 'b.logo_bank',
                                 'b.biaya_transfer',
                                 'b.biaya_tarik_tunai',
@@ -81,6 +82,7 @@ class BankController extends Controller
                 $arrayToPush = [
                     'id' => $item->id,
                     'nama_bank' => $item->nama_bank,
+                    'nomor_rekening' => $item->nomor_rekening,
                     'logo_bank' => asset('assets_admin/images/bank/'.$item->logo_bank),
                     'biaya_transfer' => $item->biaya_transfer,
                     'biaya_tarik_tunai' => $item->biaya_tarik_tunai,
