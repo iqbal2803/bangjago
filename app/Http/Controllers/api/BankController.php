@@ -70,7 +70,6 @@ class BankController extends Controller
                                 ->select(
                                 'bank_pelanggan.*',
                                 'b.nama_bank',
-                                'b.nomor_rekening',
                                 'b.logo_bank',
                                 'b.biaya_transfer',
                                 'b.biaya_tarik_tunai',
