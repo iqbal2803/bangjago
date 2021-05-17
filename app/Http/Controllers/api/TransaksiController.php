@@ -71,7 +71,7 @@ class TransaksiController extends Controller
             'nominal_transfer' => $request->get('nominal_transfer'),
             'biaya_ongkos' => $request->get('biaya_ongkos'),
             'total' => $request->get('total'),
-            'status' => 'Pending'
+            'status' => 'Pending',
             'berita' => $request->get('berita'),
             ];
 
@@ -122,7 +122,7 @@ class TransaksiController extends Controller
             'nominal_transfer' => $request->get('nominal_transfer'),
             'biaya_ongkos' => $request->get('biaya_ongkos'),
             'total' => $request->get('total'),
-            'status' => 'Pending'
+            'status' => 'Pending',
             'berita' => $request->get('berita'),
             ];
 
