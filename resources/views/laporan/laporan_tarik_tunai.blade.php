@@ -32,6 +32,7 @@
           <ul class="nav nav-pills ml-auto p-2">
             <li class="nav-item">
             <select class="form-control filter-bank" data-column="3"  name="filter_bank" id="filter_bank">
+                <option value="null">Pilih Bank</option>
                 @foreach ($databank as $data)
                 <option value="{{$data->nama_bank}}">{{$data->nama_bank}}</option>
                 @endforeach

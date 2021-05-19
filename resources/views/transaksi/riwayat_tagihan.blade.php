@@ -34,6 +34,7 @@
 
             <input type="hidden" name="cabang_id" id="cabang_id" value="{{$cabang_id}}">
             <select class="form-control filter-tagihan" data-column="3"  name="filter_tagihan" id="filter_tagihan">
+                <option value="null">Pilih Tagihan</option>
                 @foreach ($datatagihan as $data)
                 <option value="{{$data->nama_tagihan}}">{{$data->nama_tagihan}}</option>
                 @endforeach
@@ -236,7 +237,7 @@
             //window.open('https://yoururl.com', '_blank');
             var data = filter_tagihan+"/"+filter_tgl+"/"+filter_search;
              //alert(filter_tagihan+"|"+filter_tgl+"|"+filter_search);
-            window.location.href = "{{ url('transaksi/cetak_riwayat_transaksi_tagihan/cabang_id/filter_tagihan/filter_tgl/filter_search') }}".replace('cabang_id',cabang_id).replace('filter_tagihan',filter_tagihan).replace('filter_tgl',filter_tgl).replace('filter_search',filter_search);
+            window.location.href = "{{ url('transaksi/cetak_riwayat_transaksi_tagihan/cabang_id/filter_tagihan/filter_tgl/filter_search/filter_status') }}".replace('filter_tagihan',filter_tagihan).replace('cabang_id',cabang_id).replace('filter_tgl',filter_tgl).replace('filter_search',filter_search).replace('filter_status',filter_status);
           }
         });
     } );

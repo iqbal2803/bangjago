@@ -33,6 +33,7 @@
             <li class="nav-item">
             <input type="hidden" name="cabang_id" id="cabang_id" value="{{$cabang_id}}">
             <select class="form-control filter-bank" data-column="3"  name="filter_bank" id="filter_bank">
+                <option value="null">Pilih Bank</option>
                 @foreach ($databank as $data)
                 <option value="{{$data->nama_bank}}">{{$data->nama_bank}}</option>
                 @endforeach

@@ -58,22 +58,22 @@ class LaporanController extends Controller
     public function cetak_laporan_transaksi_transfer($filter_bank,$filter_tgl,$filter_search)
     {   
 
-        $transaksi;
-        if($filter_tgl=="null" && $filter_search=="null"){
-            $transaksi = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','transfer')
-                        ->where('status','Selesai')
-                        ->where('nama_bank',$filter_bank);
-        }else if($filter_search=="null"){
-            $new_date = date("Y-m-d", strtotime($filter_tgl));
-            $transaksi = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','transfer')
-                        ->where('status','Selesai')
-                        ->where('nama_bank',$filter_bank)
-                        ->where('created_at','LIKE','%'.$new_date.'%');
-        }else if($filter_tgl=="null"){
-            $transaksi = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','transfer')
-                        ->where('status','Selesai')
-                        ->where('nama_bank',$filter_bank);
+        $transaksi = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','transfer');
 
+        if($filter_bank!="null"){
+            $transaksi->where('nama_bank',$filter_bank);
+         }
+
+         if($filter_tgl!="null"){
+            $new_date = date("Y-m-d", strtotime($filter_tgl));
+            $transaksi->where('created_at','LIKE','%'.$new_date.'%');
+         }
+
+         if($filter_status!="null"){
+            $transaksi->where('status',$filter_status);
+         }
+
+         if($filter_search!="null"){
             $columns = ['nomor_rekening', 'nama_pemilik','nominal_transfer','biaya_ongkos','total'];
 
             $transaksi->where(function($q) use($columns,$filter_search) {
@@ -82,24 +82,8 @@ class LaporanController extends Controller
                 $q->orWhere($column, 'LIKE', '%' . $filter_search . '%');
                 }
             });
-
-        }else{
-            $new_date = date("Y-m-d", strtotime($filter_tgl));
-            $transaksi = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','transfer')
-                        ->where('status','Selesai')
-                        ->where('nama_bank',$filter_bank)
-                        ->where('created_at','LIKE','%'.$new_date.'%');
-
-            $columns = ['nomor_rekening', 'nama_pemilik','nominal_transfer','biaya_ongkos','total'];
-
-            $transaksi->where(function($q) use($columns,$filter_search) {
-                $q->where('nomor_transaksi', 'LIKE','%' . $filter_search . '%');
-                foreach ($columns as $column ) {
-                $q->orWhere($column, 'LIKE', '%' . $filter_search . '%');
-                }
-            });
-
-        }
+         }
+        
 
         $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
         $data['transaksi'] = $transaksi->get();
@@ -116,22 +100,22 @@ class LaporanController extends Controller
     public function cetak_laporan_transaksi_tarik_tunai($filter_bank,$filter_tgl,$filter_search)
     {   
 
-        $transaksi;
-        if($filter_tgl=="null" && $filter_search=="null"){
-            $transaksi = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','tarik tunai')
-                        ->where('status','Selesai')
-                        ->where('nama_bank',$filter_bank);
-        }else if($filter_search=="null"){
-            $new_date = date("Y-m-d", strtotime($filter_tgl));
-            $transaksi = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','tarik tunai')
-                        ->where('status','Selesai')
-                        ->where('nama_bank',$filter_bank)
-                        ->where('created_at','LIKE','%'.$new_date.'%');
-        }else if($filter_tgl=="null"){
-            $transaksi = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','tarik tunai')
-                        ->where('status','Selesai')
-                        ->where('nama_bank',$filter_bank);
+        $transaksi = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','tarik tunai');
 
+        if($filter_bank!="null"){
+            $transaksi->where('nama_bank',$filter_bank);
+         }
+
+         if($filter_tgl!="null"){
+            $new_date = date("Y-m-d", strtotime($filter_tgl));
+            $transaksi->where('created_at','LIKE','%'.$new_date.'%');
+         }
+
+         if($filter_status!="null"){
+            $transaksi->where('status',$filter_status);
+         }
+
+         if($filter_search!="null"){
             $columns = ['nomor_rekening', 'nama_pemilik','nominal_transfer','biaya_ongkos','total'];
 
             $transaksi->where(function($q) use($columns,$filter_search) {
@@ -140,22 +124,8 @@ class LaporanController extends Controller
                 $q->orWhere($column, 'LIKE', '%' . $filter_search . '%');
                 }
             });
-        }else{
-            $new_date = date("Y-m-d", strtotime($filter_tgl));
-            $transaksi = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','tarik tunai')
-                        ->where('status','Selesai')
-                        ->where('nama_bank',$filter_bank)
-                        ->where('created_at','LIKE','%'.$new_date.'%');
+         }}
 
-            $columns = ['nomor_rekening', 'nama_pemilik','nominal_transfer','biaya_ongkos','total'];
-
-            $transaksi->where(function($q) use($columns,$filter_search) {
-                $q->where('nomor_transaksi', 'LIKE','%' . $filter_search . '%');
-                foreach ($columns as $column ) {
-                $q->orWhere($column, 'LIKE', '%' . $filter_search . '%');
-                }
-            });
-        }
 
         $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
         $data['transaksi'] = $transaksi->get();
@@ -172,19 +142,22 @@ class LaporanController extends Controller
     public function cetak_laporan_transaksi_tagihan($filter_tagihan,$filter_tgl,$filter_search)
     {   
 
-        $transaksi;
-        if($filter_tgl=="null" && $filter_search=="null"){
-            $transaksi = Transaksi_Tagihan::where('cabang_id',Auth::user()->cabang->id)->where('status','Selesai')
-                        ->where('jenis_tagihan',$filter_tagihan);
-        }else if($filter_search=="null"){
-            $new_date = date("Y-m-d", strtotime($filter_tgl));
-            $transaksi = Transaksi_Tagihan::where('cabang_id',Auth::user()->cabang->id)->where('status','Selesai')
-                        ->where('jenis_tagihan',$filter_tagihan)
-                        ->where('created_at','LIKE','%'.$new_date.'%');
-        }else if($filter_tgl=="null"){
-            $transaksi = Transaksi_Tagihan::where('cabang_id',Auth::user()->cabang->id)->where('status','Selesai')
-                        ->where('jenis_tagihan',$filter_tagihan);
+        $transaksi = Transaksi_Tagihan::where('cabang_id',Auth::user()->cabang->id);
 
+         if($filter_tagihan!="null"){
+            $transaksi->where('jenis_tagihan',$filter_tagihan);
+         }
+
+         if($filter_tgl!="null"){
+            $new_date = date("Y-m-d", strtotime($filter_tgl));
+            $transaksi->where('created_at','LIKE','%'.$new_date.'%');
+         }
+
+         if($filter_status!="null"){
+            $transaksi->where('status',$filter_status);
+         }
+
+         if($filter_search!="null"){
             $columns = ['nomor_id', 'nama_pemilik','nominal_tagihan','biaya_ongkos','total'];
 
             $transaksi->where(function($q) use($columns,$filter_search) {
@@ -193,21 +166,7 @@ class LaporanController extends Controller
                 $q->orWhere($column, 'LIKE', '%' . $filter_search . '%');
                 }
             });
-        }else{
-            $new_date = date("Y-m-d", strtotime($filter_tgl));
-            $transaksi = Transaksi_Tagihan::where('cabang_id',Auth::user()->cabang->id)->where('status','Selesai')
-                        ->where('jenis_tagihan',$filter_tagihan)
-                        ->where('created_at','LIKE','%'.$new_date.'%');
-
-            $columns = ['nomor_id', 'nama_pemilik','nominal_tagihan','biaya_ongkos','total'];
-
-            $transaksi->where(function($q) use($columns,$filter_search) {
-                $q->where('nomor_transaksi', 'LIKE','%' . $filter_search . '%');
-                foreach ($columns as $column ) {
-                $q->orWhere($column, 'LIKE', '%' . $filter_search . '%');
-                }
-            });
-        }
+         }
 
         $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
         $data['transaksi'] = $transaksi->get();

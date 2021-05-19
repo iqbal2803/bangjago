@@ -67,8 +67,8 @@ Route::get('/transaksi/cetak_invoice_tarik_tunai/{nomor_pesanan}', 'TransaksiCon
 Route::get('/transaksi/cetak_invoice_tagihan/{nomor_pesanan}', 'TransaksiController@cetak_invoice_tagihan')->name('transaksi.cetak_invoice_tagihan');
 
 Route::get('/transaksi/cetak_riwayat_transaksi_transfer/{cabang_id}/{filter_bank}/{filter_tgl}/{filter_search}/{filter_status}', 'TransaksiController@cetak_riwayat_transaksi_transfer')->name('transaksi.cetak_riwayat_transaksi_transfer');
-Route::get('/transaksi/cetak_laporan_transaksi_tarik_tunai/{cabang_id}/{filter_bank}/{filter_tgl}/{filter_search}/{filter_status}', 'TransaksiController@cetak_riwayat_transaksi_tarik_tunai')->name('transaksi.cetak_riwayat_transaksi_tarik_tunai');
-Route::get('/transaksi/cetak_laporan_transaksi_tagihan/{cabang_id}/{filter_bank}/{filter_tgl}/{filter_search}/{filter_status}', 'Transaksi@cetak_riwayat_transaksi_tagihan')->name('transaksi.cetak_riwayat_transaksi_tagihan');
+Route::get('/transaksi/cetak_riwayat_transaksi_tarik_tunai/{cabang_id}/{filter_bank}/{filter_tgl}/{filter_search}/{filter_status}', 'TransaksiController@cetak_riwayat_transaksi_tarik_tunai')->name('transaksi.cetak_riwayat_transaksi_tarik_tunai');
+Route::get('/transaksi/cetak_riwayat_transaksi_tagihan/{cabang_id}/{filter_bank}/{filter_tgl}/{filter_search}/{filter_status}', 'TransaksiController@cetak_riwayat_transaksi_tagihan')->name('transaksi.cetak_riwayat_transaksi_tagihan');
 
 //DATA LAPORAN
 Route::get('/laporan/transaksi_transfer', 'LaporanController@transaksi_transfer')->name('laporan.transaksi_transfer');

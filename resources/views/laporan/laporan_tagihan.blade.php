@@ -32,6 +32,7 @@
           <ul class="nav nav-pills ml-auto p-2">
             <li class="nav-item">
             <select class="form-control filter-tagihan" data-column="3"  name="filter_tagihan" id="filter_tagihan">
+                <option value="null">Pilih Tagihan</option>
                 @foreach ($datatagihan as $data)
                 <option value="{{$data->nama_tagihan}}">{{$data->nama_tagihan}}</option>
                 @endforeach
