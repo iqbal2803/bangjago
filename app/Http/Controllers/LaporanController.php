@@ -124,7 +124,7 @@ class LaporanController extends Controller
                 $q->orWhere($column, 'LIKE', '%' . $filter_search . '%');
                 }
             });
-         }}
+         }
 
 
         $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
