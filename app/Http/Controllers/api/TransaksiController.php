@@ -72,7 +72,7 @@ class TransaksiController extends Controller
             'biaya_ongkos' => $request->get('biaya_ongkos'),
             'total' => $request->get('total'),
             'status' => 'Pending',
-            'berita' => $request->get('berita'),
+            'berita' => $request->get('berita')
             ];
 
             Transaksi_Bank::create($data);
@@ -123,7 +123,7 @@ class TransaksiController extends Controller
             'biaya_ongkos' => $request->get('biaya_ongkos'),
             'total' => $request->get('total'),
             'status' => 'Pending',
-            'berita' => $request->get('berita'),
+            'berita' => $request->get('berita')
             ];
 
             Transaksi_Bank::create($data);
