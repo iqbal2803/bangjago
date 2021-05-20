@@ -32,7 +32,7 @@
           <ul class="nav nav-pills ml-auto p-2">
             <li class="nav-item">
             <select class="form-control filter-tagihan" data-column="3"  name="filter_tagihan" id="filter_tagihan">
-                <option value="null">Pilih Tagihan</option>
+                <option value="">Pilih Tagihan</option>
                 @foreach ($datatagihan as $data)
                 <option value="{{$data->nama_tagihan}}">{{$data->nama_tagihan}}</option>
                 @endforeach
@@ -139,15 +139,9 @@
             .search( filter_tagihan.val() )
             .draw();
 
-            table.column( filter_tgl.data('column'))
-            .search( filter_tgl.val() )
-            .draw();
         });
 
         $('.filter-tgl').change(function () {
-            table.column( filter_tagihan.data('column'))
-            .search( filter_tagihan.val() )
-            .draw();
 
             table.column( filter_tgl.data('column'))
             .search( filter_tgl.val() )
@@ -158,14 +152,15 @@
 
         $("#btn_cetak").on('click',function(){
 
-            var filter_tagihan = $('#filter_tagihan').val();
+            var filter_tagihan = "null";
             var filter_tgl ="null";
             var filter_search ="null";
-            var dt_tgl,dt_search,cek="";
+            var dt_tagihan,dt_tgl,dt_search,cek="";
+            dt_tagihan = $('#filter_tagihan').val();
             dt_tgl = $('#filter_tgl').val();
             dt_search = table.search();
 
-            if(dt_tgl){
+            if(dt_tgl!=""){
               filter_tgl=dt_tgl;
               if(!/^[0-9\.\-\/]+$/.test(dt_tgl)){
                 alert("Tanggal belum lengkap");
@@ -177,7 +172,11 @@
               return;
             }else{
             
-            if(dt_search){
+            if(dt_tagihan!=""){
+              filter_tagihan=dt_tagihan;
+            }
+
+            if(dt_search!=""){
               filter_search=dt_search;
             }
             //window.open('https://yoururl.com', '_blank');

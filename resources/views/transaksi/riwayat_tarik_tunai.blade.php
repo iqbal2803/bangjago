@@ -33,7 +33,7 @@
             <li class="nav-item">
             <input type="hidden" name="cabang_id" id="cabang_id" value="{{$cabang_id}}">
             <select class="form-control filter-bank" data-column="3"  name="filter_bank" id="filter_bank">
-                <option value="null">Pilih Bank</option>
+                <option value="">Pilih Bank</option>
                 @foreach ($databank as $data)
                 <option value="{{$data->nama_bank}}">{{$data->nama_bank}}</option>
                 @endforeach
@@ -45,7 +45,7 @@
             </li>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <li class="nav-item">
-            <select class="form-control filter-bank" data-column="9"  name="filter_status" id="filter_status">
+            <select class="form-control filter-status" data-column="9"  name="filter_status" id="filter_status">
                 <option value="">Semua</option>
                 <option value="Pending">Pending</option>
                 <option value="Selesai">Selesai</option>
@@ -155,43 +155,19 @@
         var filter_status = $('#filter_status');
 
 
-        $('.filter-bank').change(function () {
+         $('.filter-bank').change(function () {
             table.column( filter_bank.data('column'))
             .search( filter_bank.val() )
-            .draw();
-
-            table.column( filter_tgl.data('column'))
-            .search( filter_tgl.val() )
-            .draw();
-
-            table.column( filter_status.data('column'))
-            .search( filter_status.val() )
             .draw();
         });
 
         $('.filter-tgl').change(function () {
-            table.column( filter_bank.data('column'))
-            .search( filter_bank.val() )
-            .draw();
-
             table.column( filter_tgl.data('column'))
             .search( filter_tgl.val() )
-            .draw();
-
-            table.column( filter_status.data('column'))
-            .search( filter_status.val() )
             .draw();
         });
 
         $('.filter-status').change(function () {
-            table.column( filter_bank.data('column'))
-            .search( filter_bank.val() )
-            .draw();
-
-            table.column( filter_tgl.data('column'))
-            .search( filter_tgl.val() )
-            .draw();
-
             table.column( filter_status.data('column'))
             .search( filter_status.val() )
             .draw();
@@ -201,16 +177,17 @@
 
         $("#btn_cetak").on('click',function(){
 
-            var filter_bank = $('#filter_bank').val();
             var cabang_id = $('#cabang_id').val();
+            var filter_bank = "null"
             var filter_tgl ="null";
             var filter_status ="null";
             var filter_search ="null";
-            var dt_tgl,dt_search,cek="";
+            var dt_bank,dt_tgl,dt_search,cek="";
+            dt_bank = $('#filter_bank').val();
             dt_tgl = $('#filter_tgl').val();
             dt_search = table.search();
 
-            if(dt_tgl){
+            if(dt_tgl!=""){
               filter_tgl=dt_tgl;
               if(!/^[0-9\.\-\/]+$/.test(dt_tgl)){
                 alert("Tanggal belum lengkap");
@@ -222,8 +199,12 @@
               return;
             }else{
             
-            if(dt_search){
-              filter_search=dt_search;
+            if(dt_bank!=""){
+               filter_bank=dt_bank;
+            }
+
+            if(dt_bank!=""){
+               filter_search=dt_search;
             }
             //window.open('https://yoururl.com', '_blank');
             var data = filter_bank+"/"+filter_tgl+"/"+filter_search+"/"+filter_status;
