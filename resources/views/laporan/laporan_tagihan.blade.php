@@ -117,7 +117,7 @@
     //         } );
     //     } );
      
-        var table = $('#example2').DataTable( {
+        var table = $('#example1').DataTable( {
             orderCellsTop: true,
             fixedHeader: true,
             "paging":   false,
@@ -142,11 +142,11 @@
         });
 
         $('.filter-tgl').change(function () {
-
             table.column( filter_tgl.data('column'))
             .search( filter_tgl.val() )
             .draw();
         });
+
 
 
 
