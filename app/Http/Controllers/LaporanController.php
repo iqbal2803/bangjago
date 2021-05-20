@@ -69,10 +69,6 @@ class LaporanController extends Controller
             $transaksi->where('created_at','LIKE','%'.$new_date.'%');
          }
 
-         if($filter_status!="null"){
-            $transaksi->where('status',$filter_status);
-         }
-
          if($filter_search!="null"){
             $columns = ['nomor_rekening', 'nama_pemilik','nominal_transfer','biaya_ongkos','total'];
 
@@ -111,10 +107,6 @@ class LaporanController extends Controller
             $transaksi->where('created_at','LIKE','%'.$new_date.'%');
          }
 
-         if($filter_status!="null"){
-            $transaksi->where('status',$filter_status);
-         }
-
          if($filter_search!="null"){
             $columns = ['nomor_rekening', 'nama_pemilik','nominal_transfer','biaya_ongkos','total'];
 
@@ -151,10 +143,6 @@ class LaporanController extends Controller
          if($filter_tgl!="null"){
             $new_date = date("Y-m-d", strtotime($filter_tgl));
             $transaksi->where('created_at','LIKE','%'.$new_date.'%');
-         }
-
-         if($filter_status!="null"){
-            $transaksi->where('status',$filter_status);
          }
 
          if($filter_search!="null"){
