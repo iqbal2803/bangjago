@@ -204,7 +204,7 @@
                filter_bank=dt_bank;
             }
 
-            if(dt_bank!=""){
+            if(dt_search!=""){
                filter_search=dt_search;
             }
             //window.open('https://yoururl.com', '_blank');
