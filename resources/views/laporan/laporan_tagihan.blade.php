@@ -49,7 +49,7 @@
           </ul>
         </div>
         <div class="card-body">
-                <table id="example1" class="table table-striped">
+                <table id="example2" class="table table-striped">
                   <thead>
                   <tr>
                     <th>No</th>
@@ -117,7 +117,7 @@
     //         } );
     //     } );
      
-        var table = $('#example1').DataTable( {
+        var table = $('#example2').DataTable( {
             orderCellsTop: true,
             fixedHeader: true,
             "paging":   false,
