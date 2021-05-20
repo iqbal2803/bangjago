@@ -72,17 +72,4 @@ class User extends Authenticatable implements JWTSubject
     {
     return $this->hasOne(Cabang::class,'users_id');
     }
-
-    public function getCreatedAtAttribute($date)
-    {
-        if(Auth::check())
-            return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->copy()->tz(Auth::user()->timezone)->format('F j, Y @ g:i A');
-        else
-            return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->copy()->tz('America/Toronto')->format('F j, Y @ g:i A');
-    }
-
-    public function getUpdatedAtAttribute($date)
-    {
-        return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('F j, Y @ g:i A');
-    }
 }
