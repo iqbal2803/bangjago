@@ -134,7 +134,7 @@
         var filter_tgl = $('#filter_tgl');
 
 
-        $('.filter-bank').change(function () {
+        $('.filter-tagihan').change(function () {
             table.column( filter_tagihan.data('column'))
             .search( filter_tagihan.val() )
             .draw();
