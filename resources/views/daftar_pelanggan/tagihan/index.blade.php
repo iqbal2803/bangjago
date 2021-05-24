@@ -66,7 +66,7 @@
                     <div class="modal-dialog modal-sm{{ $data->id}}">
                       <div class="modal-content">
                         <div class="modal-body">
-                          <p>Apakah anda akan menghapus data bank pelanggan?</p>
+                          <p>Apakah anda akan menghapus data tagihan pelanggan?</p>
                         </div>
                         <div class="modal-footer justify-content-between">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -78,7 +78,7 @@
                     <!-- /.modal-dialog -->
                   </div>
                   <!-- /.modal -->
-                  
+
                   @php $no++; @endphp
                   @endforeach
                   </tbody>
