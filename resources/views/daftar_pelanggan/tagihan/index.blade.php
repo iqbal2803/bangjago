@@ -57,10 +57,28 @@
                       </button>
                       <div class="dropdown-menu" role="menu">
                         <a class="dropdown-item" href="{{url('daftar_pelanggan/edit_daftar_tagihan/'.$data->id)}}">Edit</a>
-                        <a class="dropdown-item" href="{{url('daftar_pelanggan/hapus_daftar_tagihan/'.$data->id)}}">Hapus</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#modal-sm{{ $data->id}}">Hapus</a>
                       </div>
                     </td>
                   </tr>
+
+                   <div class="modal fade" id="modal-sm{{ $data->id}}">
+                    <div class="modal-dialog modal-sm{{ $data->id}}">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <p>Apakah anda akan menghapus data bank pelanggan?</p>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                          <a href="{{url('daftar_pelanggan/hapus_daftar_tagihan/'.$data->id)}}"><button type="button" class="btn btn-primary" >Konfirmasi</button></a>
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
+                  <!-- /.modal -->
+                  
                   @php $no++; @endphp
                   @endforeach
                   </tbody>
