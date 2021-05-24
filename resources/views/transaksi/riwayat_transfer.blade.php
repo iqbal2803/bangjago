@@ -99,7 +99,7 @@
                         <a class="dropdown-item" href="{{url('transaksi/cetak_invoice_transfer/'.$data->nomor_transaksi)}}">Cetak Invoice</a>
                       </div>
                       @else
-                      <a href="{{url('transaksi.cetak_invoice_transfer/'.$data->nomor_pesanan)}}"><button class="btn btn-info btn-flat">Cetak Invoice</button></a>
+                      <a href="{{url('transaksi/cetak_invoice_transfer/'.$data->nomor_transaksi)}}"><button class="btn btn-info btn-flat">Cetak Invoice</button></a>
                       @endif
                     </td>
                     @endif

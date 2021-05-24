@@ -95,15 +95,33 @@
                         <span class="sr-only">Toggle Dropdown</span>
                       </button>
                       <div class="dropdown-menu" role="menu">
-                        <a class="dropdown-item" href="{{url('transaksi/update_status_tarik_tunai/'.$data->nomor_transaksi)}}">Ganti Status</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#modal-sm{{ $data->nomor_transaksi}}">Ganti Status</a>
                         <a class="dropdown-item" href="{{url('transaksi/cetak_invoice_tarik_tunai/'.$data->nomor_transaksi)}}">Cetak Invoice</a>
                       </div>
                       @else
-                      <a href="{{url('transaksi.cetak_invoice_tarik_tunai/'.$data->nomor_pesanan)}}"><button class="btn btn-info btn-flat">Cetak Invoice</button></a>
+                      <a href="{{url('transaksi/cetak_invoice_tarik_tunai/'.$data->nomor_transaksi)}}"><button class="btn btn-info btn-flat">Cetak Invoice</button></a>
                       @endif
                     </td>
                     @endif
                   </tr>
+
+                  <div class="modal fade" id="modal-sm{{ $data->nomor_transaksi}}">
+                    <div class="modal-dialog modal-sm{{ $data->nomor_transaksi}}">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <p>Apakah anda akan mengganti status transaksi?</p>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                          <a href="{{url('transaksi/update_status_tarik_tunai/'.$data->nomor_transaksi)}}"><button type="button" class="btn btn-primary" >Konfirmasi</button></a>
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
+                  <!-- /.modal -->
+
                   @php $no++; @endphp
                   @endforeach
                   </tbody>
