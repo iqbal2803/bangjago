@@ -26,7 +26,7 @@ class TransaksiController extends Controller
     {
         $data['cabang_id'] = $cabang_id;
         $data['databank'] = Bank::all();
-        $data['transaksi'] = Transaksi_Bank::where('cabang_id',$cabang_id)->where('jenis_transaksi','transfer')->get();
+        $data['transaksi'] = Transaksi_Bank::where('cabang_id',$cabang_id)->where('jenis_transaksi','transfer')->OrderBy('created_at','desc')->get();
         return view('transaksi.riwayat_transfer',$data);
     }
 
@@ -34,7 +34,7 @@ class TransaksiController extends Controller
     {
         $data['cabang_id'] = $cabang_id;
         $data['databank'] = Bank::all();
-        $data['transaksi'] = Transaksi_Bank::where('cabang_id',$cabang_id)->where('jenis_transaksi','tarik tunai')->get();
+        $data['transaksi'] = Transaksi_Bank::where('cabang_id',$cabang_id)->where('jenis_transaksi','tarik tunai')->OrderBy('created_at','desc')->get();
         return view('transaksi.riwayat_tarik_tunai',$data);
     }
 
@@ -42,7 +42,7 @@ class TransaksiController extends Controller
     {
         $data['cabang_id'] = $cabang_id;
         $data['datatagihan'] = Tagihan::all();
-        $data['transaksi'] = Transaksi_Tagihan::where('cabang_id',$cabang_id)->get();
+        $data['transaksi'] = Transaksi_Tagihan::where('cabang_id',$cabang_id)->OrderBy('created_at','desc')->get();
         return view('transaksi.riwayat_tagihan',$data);
     }
 
@@ -110,6 +110,11 @@ class TransaksiController extends Controller
          }
 
          if($filter_search!="null"){
+            $replace_search = str_replace(".","",$filter_search);
+            if(is_numeric($replace_search)==1){
+                $filter_search = $replace_search;
+            }
+
             $columns = ['nomor_rekening', 'nama_pemilik','nominal_transfer','biaya_ongkos','total'];
 
             $transaksi->where(function($q) use($columns,$filter_search) {
@@ -121,7 +126,7 @@ class TransaksiController extends Controller
          }
 
         $data['cabang']=Cabang::where('id',$cabang_id)->first();
-        $data['transaksi'] = $transaksi->get();
+        $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
 
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
@@ -151,6 +156,11 @@ class TransaksiController extends Controller
          }
 
          if($filter_search!="null"){
+            $replace_search = str_replace(".","",$filter_search);
+            if(is_numeric($replace_search)==1){
+                $filter_search = $replace_search;
+            }
+
             $columns = ['nomor_rekening', 'nama_pemilik','nominal_transfer','biaya_ongkos','total'];
 
             $transaksi->where(function($q) use($columns,$filter_search) {
@@ -162,7 +172,7 @@ class TransaksiController extends Controller
          }
 
         $data['cabang']=Cabang::where('id',$cabang_id)->first();
-        $data['transaksi'] = $transaksi->get();
+        $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
 
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
@@ -192,6 +202,11 @@ class TransaksiController extends Controller
          }
 
          if($filter_search!="null"){
+            $replace_search = str_replace(".","",$filter_search);
+            if(is_numeric($replace_search)==1){
+                $filter_search = $replace_search;
+            }
+            
             $columns = ['nomor_id', 'nama_pemilik','nominal_tagihan','biaya_ongkos','total'];
 
             $transaksi->where(function($q) use($columns,$filter_search) {
@@ -203,7 +218,7 @@ class TransaksiController extends Controller
          }
 
         $data['cabang']=Cabang::where('id',$cabang_id)->first();
-        $data['transaksi'] = $transaksi->get();
+        $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
 
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,

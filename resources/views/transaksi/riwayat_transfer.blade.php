@@ -84,9 +84,9 @@
                     <td>{{ $data->nama_bank}}</td>
                     <td>{{ $data->nomor_rekening}}</td>
                     <td>{{ $data->nama_pemilik}}</td>
-                    <td>{{ $data->nominal_transfer}}</td>
-                    <td>{{ $data->biaya_ongkos}}</td>
-                    <td>{{ $data->total}}</td>
+                    <td>{{ format_price($data->nominal_transfer)}}</td>
+                    <td>{{ format_price($data->biaya_ongkos)}}</td>
+                    <td>{{ format_price($data->total)}}</td>
                     <td>{{ $data->status}}</td>
                      @if(Auth::user()->role->nama_role=='Admin Cabang')
                      <td>
@@ -95,7 +95,7 @@
                         <span class="sr-only">Toggle Dropdown</span>
                       </button>
                       <div class="dropdown-menu" role="menu">
-                        <a class="dropdown-item" href="{{url('transaksi/update_status_transfer/'.$data->nomor_transaksi)}}">Ganti Status</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#modal-sm{{ $data->nomor_transaksi}}">Ganti Status</a>
                         <a class="dropdown-item" href="{{url('transaksi/cetak_invoice_transfer/'.$data->nomor_transaksi)}}">Cetak Invoice</a>
                       </div>
                       @else
@@ -104,6 +104,24 @@
                     </td>
                     @endif
                   </tr>
+
+                  <div class="modal fade" id="modal-sm{{ $data->nomor_transaksi}}">
+                    <div class="modal-dialog modal-sm{{ $data->nomor_transaksi}}">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <p>Apakah anda akan mengganti status transaksi?</p>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                          <a href="{{url('transaksi/update_status_transfer/'.$data->nomor_transaksi)}}"><button type="button" class="btn btn-primary" >Konfirmasi</button></a>
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
+                  <!-- /.modal -->
+
                   @php $no++; @endphp
                   @endforeach
                   </tbody>

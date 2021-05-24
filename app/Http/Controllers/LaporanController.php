@@ -26,7 +26,7 @@ class LaporanController extends Controller
     {
         $data['databank'] = Bank::all();
         if(Auth::user()->role->nama_role=='Admin Cabang'){
-        $data['transaksi'] = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','transfer')->where('status','Selesai')->get();
+        $data['transaksi'] = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','transfer')->where('status','Selesai')->OrderBy('created_at','desc')->get();
         }else{
         $data['transaksi']=[];
         }
@@ -37,7 +37,7 @@ class LaporanController extends Controller
     {
         $data['databank'] = Bank::all();
         if(Auth::user()->role->nama_role=='Admin Cabang'){
-        $data['transaksi'] = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','tarik tunai')->where('status','Selesai')->get();
+        $data['transaksi'] = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi','tarik tunai')->where('status','Selesai')->OrderBy('created_at','desc')->get();
         }else{
         $data['transaksi']=[];
         }
@@ -48,7 +48,7 @@ class LaporanController extends Controller
     {
         $data['datatagihan'] = Tagihan::all();
         if(Auth::user()->role->nama_role=='Admin Cabang'){
-        $data['transaksi'] = Transaksi_Tagihan::where('cabang_id',Auth::user()->cabang->id)->where('status','Selesai')->get();
+        $data['transaksi'] = Transaksi_Tagihan::where('cabang_id',Auth::user()->cabang->id)->where('status','Selesai')->OrderBy('created_at','desc')->get();
         }else{
         $data['transaksi']=[];
         }
@@ -70,6 +70,11 @@ class LaporanController extends Controller
          }
 
          if($filter_search!="null"){
+            $replace_search = str_replace(".","",$filter_search);
+            if(is_numeric($replace_search)==1){
+                $filter_search = $replace_search;
+            }
+
             $columns = ['nomor_rekening', 'nama_pemilik','nominal_transfer','biaya_ongkos','total'];
 
             $transaksi->where(function($q) use($columns,$filter_search) {
@@ -82,7 +87,7 @@ class LaporanController extends Controller
         
 
         $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
-        $data['transaksi'] = $transaksi->get();
+        $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
 
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
@@ -108,6 +113,11 @@ class LaporanController extends Controller
          }
 
          if($filter_search!="null"){
+            $replace_search = str_replace(".","",$filter_search);
+            if(is_numeric($replace_search)==1){
+                $filter_search = $replace_search;
+            }
+
             $columns = ['nomor_rekening', 'nama_pemilik','nominal_transfer','biaya_ongkos','total'];
 
             $transaksi->where(function($q) use($columns,$filter_search) {
@@ -120,7 +130,7 @@ class LaporanController extends Controller
 
 
         $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
-        $data['transaksi'] = $transaksi->get();
+        $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
 
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
@@ -146,6 +156,11 @@ class LaporanController extends Controller
          }
 
          if($filter_search!="null"){
+            $replace_search = str_replace(".","",$filter_search);
+            if(is_numeric($replace_search)==1){
+                $filter_search = $replace_search;
+            }
+            
             $columns = ['nomor_id', 'nama_pemilik','nominal_tagihan','biaya_ongkos','total'];
 
             $transaksi->where(function($q) use($columns,$filter_search) {
@@ -157,7 +172,7 @@ class LaporanController extends Controller
          }
 
         $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
-        $data['transaksi'] = $transaksi->get();
+        $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
 
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,

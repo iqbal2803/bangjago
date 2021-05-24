@@ -85,9 +85,9 @@
                     <td>{{ $data->jenis_tagihan}}</td>
                     <td>{{ $data->nomor_id}}</td>
                     <td>{{ $data->nama_pemilik}}</td>
-                    <td>{{ $data->nominal_tagihan}}</td>
-                    <td>{{ $data->biaya_ongkos}}</td>
-                    <td>{{ $data->total}}</td>
+                    <td>{{ format_price($data->nominal_tagihan)}}</td>
+                    <td>{{ format_price($data->biaya_ongkos)}}</td>
+                    <td>{{ format_price($data->total)}}</td>
                     <td>{{ $data->status}}</td>
                      @if(Auth::user()->role->nama_role=='Admin Cabang')
                      <td>

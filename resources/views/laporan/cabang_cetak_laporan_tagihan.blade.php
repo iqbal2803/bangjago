@@ -12,10 +12,12 @@
     #example2 td{
         text-align: center;
       border: 1px solid black;
+      font-size: 11pt;
     }
     #example2 th{
         text-align: center;
       border: 1px solid black;
+      font-size: 11pt;
     }
 
     #example2 {
@@ -69,9 +71,9 @@
                     <td>{{ $data->jenis_tagihan}}</td>
                     <td>{{ $data->nomor_id}}</td>
                     <td>{{ $data->nama_pemilik}}</td>
-                    <td>{{ $data->nominal_tagihan}}</td>
-                    <td>{{ $data->biaya_ongkos}}</td>
-                    <td>{{ $data->total}}</td>
+                    <td>{{ format_price($data->nominal_tagihan)}}</td>
+                    <td>{{ format_price($data->biaya_ongkos)}}</td>
+                    <td>{{ format_price($data->total)}}</td>
                   </tr>
                   @php $no++; @endphp
                   @endforeach

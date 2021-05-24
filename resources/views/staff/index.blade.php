@@ -60,26 +60,38 @@
                       </button>
                       <div class="dropdown-menu" role="menu">
                         <a class="dropdown-item" href="{{url('staff/edit_staff/'.$data->id)}}">Edit</a>
-                        <a class="dropdown-item" href="{{url('staff/hapus_staff/'.$data->id)}}">Hapus</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#modal-sm{{ $data->id}}">Hapus</a>
                       </div>
                     </td>
                   </tr>
+
+                  <div class="modal fade" id="modal-sm{{ $data->id}}">
+                  <div class="modal-dialog modal-sm{{ $data->id}}">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <p>Apakah anda akan menghapus data pengguna?</p>
+                      </div>
+                      <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                        <a href="{{url('staff/hapus_staff/'.$data->id)}}"><button type="button" class="btn btn-primary" >Konfirmasi</button></a>
+                      </div>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+
+
                   @php $no++; @endphp
                   @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Email</th>
-                    <th>No Telepon</th>
-                    <th>Hak Akses</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->
+
+              
+
         <div class="card-footer">
           <!-- Footer -->
         </div>
