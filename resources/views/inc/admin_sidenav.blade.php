@@ -46,7 +46,7 @@
               <i class="nav-icon fas fa-database"></i>
               <p>
                 Daftar Pelanggan
-                <i class="right fas fa-angle-left"></i>
+                <i class="right fas fa-angle-right" ></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -91,7 +91,7 @@
               <i class="nav-icon fas fa-database"></i>
               <p>
                 Riwayat Transaksi
-                <i class="right fas fa-angle-left"></i>
+                <i class="right fas fa-angle-right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -122,7 +122,7 @@
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Laporan
-                <i class="right fas fa-angle-left"></i>
+                <i class="right fas fa-angle-right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -163,7 +163,7 @@
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Pengaturan Staff
-                <i class="right fas fa-angle-left"></i>
+                <i class="right fas fa-angle-right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
