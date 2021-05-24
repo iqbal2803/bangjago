@@ -25,6 +25,7 @@ class DaftarPelangganController extends Controller
                                 'bank_pelanggan.*',
                                 'b.nama_bank'
                                 )
+                                ->OrderBy('created_at','desc')
                                 ->get();
         $data['daftar'] = $bank;
         return view('daftar_pelanggan.bank.index',$data);
@@ -82,6 +83,7 @@ class DaftarPelangganController extends Controller
                                 'tagihan_pelanggan.*',
                                 'b.nama_tagihan'
                                 )
+                                ->OrderBy('created_at','desc')
                                 ->get();
         $data['daftar'] = $tagihan;
         return view('daftar_pelanggan.tagihan.index',$data);

@@ -17,7 +17,7 @@ class BankController extends Controller
      */
     public function index()
     {
-        $bank = Bank::OrderBy('created_at','desc')->get();
+        $bank = Bank::all();
         $data['banks'] = $bank;
         return view('bank.index',$data);
     }

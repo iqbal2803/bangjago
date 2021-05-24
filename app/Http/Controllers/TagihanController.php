@@ -17,7 +17,7 @@ class TagihanController extends Controller
      */
     public function index()
     {
-        $tagihan = Tagihan::OrderBy('created_at','desc')->get();
+        $tagihan = Tagihan::all();
         $data['tagihans'] = $tagihan;
         return view('tagihan.index',$data);
     }
