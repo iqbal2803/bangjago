@@ -24,7 +24,7 @@
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('dist/css/adminlte.css')}}">
   <!-- Slider checkbox -->
   <link rel="stylesheet" href="{{ asset('dist/css/slider-checkbox.css')}}">
   <!-- overlayScrollbars -->
