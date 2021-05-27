@@ -184,4 +184,81 @@ class BankController extends Controller
         
     }
 
+    public function getOngkosTarikTunaiBank(Request $request)
+    {   
+        try {
+
+            if (!$user = JWTAuth::parseToken()->authenticate()) {
+                return response()->json(['user_not_found'], 404);
+            }
+
+            $bank = Bank_Ongkos::where('jenis_transaksi','tarik tunai')
+                    ->where('nominal_awal','<=',$request->get('nominal'))
+                    ->orderBy('nominal_awal','desc')
+                    ->limit(1)
+                    ->first();
+            $arrResult = [];
+
+            // echo $bank->nominal_akhir;
+            // return;
+            if($bank!=null || $bank!=""){
+
+                if($request->get('nominal')>$bank->nominal_akhir){
+
+                return response()->json([
+                    "error" => false,
+                    "message" => "ongkos tidak ditemukan",
+                    "data" => [
+                        "bank" => $arrResult,
+                    ]
+                ]);
+
+                }else{
+
+                $arrayToPush = [
+                    'id' => $bank->id,
+                    'jenis_transaksi' => $bank->jenis_transaksi,
+                    'nominal_awal' => $bank->nominal_awal,
+                    'nominal_akhir' => $bank->nominal_akhir,
+                    'ongkos_sesama_bank' => $bank->ongkos_sesama_bank,
+                    'ongkos_antar_bank' => $bank->ongkos_antar_bank,
+                    'created_at' => $bank->created_at,
+                    'updated_at' => $bank->updated_at
+                ];
+
+                array_push($arrResult, $arrayToPush);
+                
+
+                return response()->json([
+                    "error" => false,
+                    "message" => "ongkos ditemukan",
+                    "data" => [
+                        "bank" => $arrResult,
+                    ]
+                ]);
+
+                }
+            }else{
+                return response()->json([
+                    "error" => false,
+                    "message" => "ongkos tidak ditemukan",
+                    "data" => [
+                        "bank" => $arrResult,
+                    ]
+                ]);
+            }
+
+        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+
+            return response()->json(['token_expired'], $e->getStatusCode());
+        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+
+            return response()->json(['token_invalid'], $e->getStatusCode());
+        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+
+            return response()->json(['token_absent'], $e->getStatusCode());
+        }
+        
+    }
+
 }

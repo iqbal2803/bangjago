@@ -32,6 +32,7 @@ Route::group(['namespace' => 'api'], function () {
 			Route::get('getBank', 'BankController@getBank');
 			Route::get('getBankPelanggan', 'BankController@getBankPelanggan');
 			Route::post('getOngkosTransferBank', 'BankController@getOngkosTransferBank');
+			Route::post('getOngkosTarikTunaiBank', 'BankController@getOngkosTarikTunaiBank');
 		});
 
 		Route::group(['prefix' => 'tagihan'], function () {
