@@ -54,7 +54,7 @@
                       </div>
                       <div class="col-sm-4">
                         <input type="hidden" class="form-control" name="id_bank" id="id_bank" value="{{$bank->id}}">
-                        <input type="file" name="logo_bank" id="logo_bank" class="input-file" required=""><br>
+                        <input type="file" name="logo_bank" id="logo_bank" class="input-file"><br>
                           <p style="color:red;">*Ukuran Upload File Maksimal 10MB</p>
                       </div>
                     </div>
