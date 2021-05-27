@@ -52,8 +52,8 @@
                     <td>{{$no}}</td>
                     <td>{{ format_price($ongkos->nominal_awal)}}</td>
                     <td>{{ format_price($ongkos->nominal_akhir)}}</td>
-                    <td>{{ $ongkos->ongkos_sesama_bank}}</td>
-                    <td>{{ $ongkos->ongkos_antar_bank}}</td>
+                    <td>{{ format_price($ongkos->ongkos_sesama_bank)}}</td>
+                    <td>{{ format_price($ongkos->ongkos_antar_bank)}}</td>
                     <td>
                       <button type="button" class="btn btn-info btn-flat dropdown-toggle dropdown-icon" data-toggle="dropdown">Aksi
                         <span class="sr-only">Toggle Dropdown</span>
