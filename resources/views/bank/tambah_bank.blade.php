@@ -61,22 +61,14 @@
                       <div class="col-sm-1">
                         <!-- select -->
                         <div class="form-group">
-                          <label>Biaya Transfer</label>
+                          <label>Jenis Bank</label>
                         </div>
                       </div>
                       <div class="col-sm-2">
-                        <input type="text" class="form-control" name="biaya_transfer" id="biaya_transfer" placeholder="Biaya Transfer" required="">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-1">
-                        <!-- select -->
-                        <div class="form-group">
-                          <label>Biaya Tarik Tunai</label>
-                        </div>
-                      </div>
-                      <div class="col-sm-2">
-                        <input type="text" class="form-control" name="biaya_tarik_tunai" id="biaya_tarik_tunai" placeholder="Biaya Tarik Tunai" required="">
+                        <select class="form-control" name="jenis_bank" id="jenis_bank">
+                          <option value="Sesama Bank">Sesama Bank</option>
+                          <option value="Antar Bank">Antar Bank</option>
+                        </select>
                       </div>
                     </div>
 

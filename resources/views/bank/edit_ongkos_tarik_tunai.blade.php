@@ -23,7 +23,7 @@
     </section>
 
       <section class="content">
-        <form action="{{ route('bank.update_bank') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('bank.update_ongkos_tarik_tunai') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="container-fluid">
           <div class="row">
@@ -32,51 +32,52 @@
               <!-- general form elements -->
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title"><b>Edit Data Bank</b></h3>
+                  <h3 class="card-title"><b>Edit Data Ongkos Tarik Tunai</b></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
+
                 <form role="form">
                   <div class="card-body">
                     <div class="row">
-                      <div class="position-relative row form-group justify-content-center col-sm-12">
-                        <div class="col-sm-2">
-                          <img src="{{ asset('assets_admin/images/bank/'.$bank->logo_bank) }}" width="100px" height="100px" class="radius-10 bd-placeholder-img mb-2" alt="">
+                      <div class="col-sm-1">
+                        <div class="form-group">
+                          <label>Nominal Awal</label>
                         </div>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="position-relative row form-group">
-                        <label class="col-sm-3 col-form-label">Upload Logo Bank</label>
-                        <div class="col-sm-8">
-                          <input type="file" name="logo_bank" id="logo_bank" class="input-file">
-                          <input type="hidden" class="form-control" name="id_bank" id="id_bank" value="{{$bank->id}}">
-                        </div>
+                      <div class="col-sm-2">
+                        <input type="text" class="form-control" name="nominal_awal" id="nominal_awal" placeholder="Nominal Awal" value="{{$ongkos->nominal_awal}}" required="">
+                        <input type="hidden" class="form-control" name="id_ongkos" id="id_ongkos" value="{{$ongkos->id}}">
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-sm-1">
-                        <!-- select -->
                         <div class="form-group">
-                          <label>Nama Bank</label>
+                          <label>Nominal</label>
                         </div>
                       </div>
                       <div class="col-sm-2">
-                        <input type="text" class="form-control" name="nama_bank" id="nama_bank" placeholder="Nama Bank" value="{{$bank->nama_bank}}" required="">
+                        <input type="text" class="form-control" name="nominal_akhir" id="nominal_akhir" placeholder="Nominal Akhir" value="{{$ongkos->nominal_akhir}}" required="">
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-sm-1">
-                        <!-- select -->
                         <div class="form-group">
-                          <label>Jenis Bank</label>
+                          <label>Ongkos Sesama Bank</label>
                         </div>
                       </div>
                       <div class="col-sm-2">
-                        <select class="form-control" name="jenis_bank" id="jenis_bank">
-                          <option value="Sesama Bank" @if ($bank->jenis_bank=='Sesama Bank') selected @endif >Sesama Bank</option>
-                          <option value="Antar Bank" @if ($bank->jenis_bank=='Antar Bank') selected @endif>Antar Bank</option>
-                        </select>
+                        <input type="text" class="form-control" name="ongkos_sesama_bank" id="ongkos_sesama_bank" placeholder="Ongkos Sesama Bank" value="{{$ongkos->ongkos_sesama_bank}}" required="">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-1">
+                        <div class="form-group">
+                          <label>Ongkos Antar Bank</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-2">
+                        <input type="text" class="form-control" name="ongkos_antar_bank" id="ongkos_antar_bank" placeholder="Ongkos Antar Bank" value="{{$ongkos->ongkos_antar_bank}}" required="">
                       </div>
                     </div>
 

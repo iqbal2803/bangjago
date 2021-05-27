@@ -34,6 +34,20 @@ Route::post('/bank/store_bank', 'BankController@store_bank')->name('bank.store_b
 Route::get('/bank/edit_bank/{id}', 'BankController@edit_bank')->name('bank.edit_bank');
 Route::post('/bank/update_bank', 'BankController@update_bank')->name('bank.update_bank');
 Route::get('/bank/hapus_bank/{id}', 'BankController@hapus_bank')->name('bank.hapus_bank');
+//DATA ONGKOS TRANSFER BANK
+Route::get('/bank/ongkos_transfer', 'BankController@ongkos_transfer')->name('bank.ongkos_transfer');
+Route::get('/bank/tambah_ongkos_transfer', 'BankController@tambah_ongkos_transfer')->name('bank.tambah_ongkos_transfer');
+Route::post('/bank/store_ongkos_transfer', 'BankController@store_ongkos_transfer')->name('bank.store_ongkos_transfer');
+Route::get('/bank/edit_ongkos_transfer/{id}', 'BankController@edit_ongkos_transfer')->name('bank.edit_ongkos_transfer');
+Route::post('/bank/update_ongkos_transfer', 'BankController@update_ongkos_transfer')->name('bank.update_ongkos_transfer');
+Route::get('/bank/hapus_ongkos_transfer/{id}', 'BankController@hapus_ongkos_transfer')->name('bank.hapus_ongkos_transfer');
+//DATA ONGKOS TARIK TUNAI BANK
+Route::get('/bank/ongkos_tarik_tunai', 'BankController@ongkos_tarik_tunai')->name('bank.ongkos_tarik_tunai');
+Route::get('/bank/tambah_ongkos_tarik_tunai', 'BankController@tambah_ongkos_tarik_tunai')->name('bank.tambah_ongkos_tarik_tunai');
+Route::post('/bank/store_ongkos_tarik_tunai', 'BankController@store_ongkos_tarik_tunai')->name('bank.store_ongkos_tarik_tunai');
+Route::get('/bank/edit_ongkos_tarik_tunai/{id}', 'BankController@edit_ongkos_tarik_tunai')->name('bank.edit_ongkos_tarik_tunai');
+Route::post('/bank/update_ongkos_tarik_tunai', 'BankController@update_ongkos_tarik_tunai')->name('bank.update_ongkos_tarik_tunai');
+Route::get('/bank/hapus_ongkos_tarik_tunai/{id}', 'BankController@hapus_ongkos_tarik_tunai')->name('bank.hapus_ongkos_tarik_tunai');
 
 //DATA TAGIHAN
 Route::get('/tagihan', 'TagihanController@index')->name('tagihan.index');

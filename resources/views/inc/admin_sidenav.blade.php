@@ -67,12 +67,33 @@
           @endif
           @if(in_array('2', json_decode(Auth::user()->role->permission)))
           <li class="nav-item">
-            <a href="{{route('bank.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-database"></i>
               <p>
                 Pengaturan Bank
+                <i class="right fas fa-angle-right" ></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('bank.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Daftar Bank</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('bank.ongkos_transfer')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Biaya Ongkos Transfer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('bank.ongkos_tarik_tunai')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Biaya Ongkos Tarik Tunai</p>
+                </a>
+              </li>
+            </ul>
           </li>
           @endif
           @if(in_array('3', json_decode(Auth::user()->role->permission)))

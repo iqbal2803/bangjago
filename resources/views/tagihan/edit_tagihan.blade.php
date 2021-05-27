@@ -56,7 +56,6 @@
                     </div>
                     <div class="row">
                       <div class="col-sm-1">
-                        <!-- select -->
                         <div class="form-group">
                           <label>Nama Tagihan</label>
                         </div>
@@ -65,23 +64,55 @@
                         <input type="text" class="form-control" name="nama_tagihan" id="nama_tagihan" placeholder="Nama tagihan" value="{{$tagihan->nama_tagihan}}" required="">
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-sm-1">
-                        <!-- select -->
-                        <div class="form-group">
-                          <label>Biaya Tarik Tunai</label>
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <input name="btn-tambah-form" id="btn-tambah-form" type="button" value="Tambah" class="btn btn-success">
+                            <input name="btn-hapus-form" id="btn-hapus-form" type="button" value="Hapus Produk" class="btn btn-danger" @php if($jumlah_tagihan_ongkos==0) echo 'disabled' @endphp>
+                            <input type="text" name="txtCount" id="txtCount" value="{{$jumlah_tagihan_ongkos}}" style="width: 30px;" />
                         </div>
+                    </div>
+
+                    <div class="form-group" id="form-tambah">
+                    @php $next=1; @endphp
+                    @foreach ($dt_tagihan_ongkos as $tagihan_ongkos)
+                    <div class='form-group' id='form-tambah-group{{$next}}'>
+                    <div class='row'>
+                      <div class='col-sm-1'>
+                          <div class='form-group'>
+                              <label>Nominal Awal</label>
+                          </div>
                       </div>
-                      <div class="col-sm-2">
-                        <input type="text" class="form-control" name="biaya_tarik_tunai" id="biaya_tarik_tunai" placeholder="Biaya Tarik Tunai" value="{{$tagihan->biaya_tarik_tunai}}" required="">
+                      <div class='col-sm-2'>
+                          <input type='text' class='form-control' name='nominal_awal[]' id='nominal_awal{{$next}}' placeholder='Nominal Awal' value="{{$tagihan_ongkos->nominal_awal}}" required=''>
                       </div>
+                      <div class='col-sm-1'>
+                          <div class='form-group'>
+                              <label>Nominal Akhir</label>
+                          </div>
+                      </div>
+                      <div class='col-sm-2'>
+                          <input type='text' class='form-control' name='nominal_akhir[]' id='nominal_akhir{{$next}}' placeholder='Nominal Akhir' value="{{$tagihan_ongkos->nominal_akhir}}" required=''>
+                      </div>
+                      <div class='col-sm-2'>
+                          <div class='form-group'>
+                              <label>Ongkos Tagihan</label>+
+                          </div>
+                      </div>
+                      <div class='col-sm-2'>
+                          <input type='text' class='form-control' name='ongkos_tagihan[]' id='ongkos_tagihan{{$next}}' placeholder='Ongkos Tagihan' value="{{$tagihan_ongkos->ongkos_tagihan}}" required=''>
+                      </div>
+                    </div>
+                    </div>
+                    @php $next++; @endphp
+                    @endforeach
+
                     </div>
 
                   </div>
                   <!-- /.card-body -->
 
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" id="btn_simpan" name="btn_simpan" class="btn btn-primary">Submit</button>
                   </div>
                 </form>
               </div>
@@ -96,5 +127,69 @@
       <!-- /.content --> 
 
   </div>
-<!-- /.content-wrapper
-  @endsection
+@endsection
+
+@section('script')
+<script type="text/javascript">
+
+$(document).ready(function(){ // Ketika halaman sudah diload dan siap
+    $("#btn-tambah-form").click(function(){ // Ketika tombol Tambah Data Form di klik
+        var jumlah = parseInt($("#txtCount").val());
+        var nextform = jumlah + 1;    
+        
+        document.getElementById("btn_simpan").disabled = false;
+        document.getElementById("btn-hapus-form").disabled = false;
+
+        $("#form-tambah").append(
+            "<div class='form-group' id='form-tambah-group"+nextform+"'>"+
+            "<div class='row'>"+
+              "<div class='col-sm-1'>"+
+                  "<div class='form-group'>"+
+                      "<label>Nominal Awal</label>"+
+                  "</div>"+
+              "</div>"+
+              "<div class='col-sm-2'>"+
+                  "<input type='text' class='form-control' name='nominal_awal[]' id='nominal_awal"+nextform+"' placeholder='Nominal Awal' required=''>"+
+              "</div>"+
+              "<div class='col-sm-1'>"+
+                  "<div class='form-group'>"+
+                      "<label>Nominal</label>"+
+                  "</div>"+
+              "</div>"+
+              "<div class='col-sm-2'>"+
+                  "<input type='text' class='form-control' name='nominal_akhir[]' id='nominal_akhir"+nextform+"' placeholder='Nominal Akhir' required=''>"+
+              "</div>"+
+              "<div class='col-sm-2'>"+
+                  "<div class='form-group'>"+
+                      "<label>Ongkos Tagihan</label>"+
+                  "</div>"+
+              "</div>"+
+              "<div class='col-sm-2'>"+
+                  "<input type='text' class='form-control' name='ongkos_tagihan[]' id='ongkos_tagihan"+nextform+"' placeholder='Ongkos Tagihan' required=''>"+
+              "</div>"+
+            "</div>"+
+            "</div>"
+            );
+
+        $("#txtCount").val(nextform);
+    });
+
+    $("#btn-hapus-form").click(function(){ // Ketika tombol Tambah Data Form di klik
+
+        var jumlah = parseInt($("#txtCount").val());
+        $('#form-tambah-group'+jumlah).remove();
+        var nextform = jumlah - 1;
+        $("#txtCount").val(nextform);
+
+        if(nextform==0){
+            document.getElementById("btn-hapus-form").disabled = true;
+        }else{
+            document.getElementById("btn-hapus-form").disabled = false;
+            document.getElementById("btn_simpan").disabled = true;
+        }
+    });
+
+});
+
+</script>
+@endsection

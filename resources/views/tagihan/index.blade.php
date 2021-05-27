@@ -40,7 +40,6 @@
                     <th>No</th>
                     <th>Logo</th>
                     <th>Nama Tagihan</th>
-                    <th>Biaya Tagihan</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
@@ -52,7 +51,6 @@
                     <td><img src="{{ asset('assets_admin/images/tagihan/'.$tagihan->logo_tagihan) }}" width="100px" height="100px" class="radius-10 bd-placeholder-img mb-2" alt="">
                     </td>
                     <td>{{ $tagihan->nama_tagihan}}</td>
-                    <td>{{ format_price($tagihan->biaya_tarik_tunai)}}</td>
                     <td>
                       <button type="button" class="btn btn-info btn-flat dropdown-toggle dropdown-icon" data-toggle="dropdown">Aksi
                         <span class="sr-only">Toggle Dropdown</span>

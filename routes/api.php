@@ -31,11 +31,13 @@ Route::group(['namespace' => 'api'], function () {
 		Route::group(['prefix' => 'bank'], function () {
 			Route::get('getBank', 'BankController@getBank');
 			Route::get('getBankPelanggan', 'BankController@getBankPelanggan');
+			Route::post('getOngkosTransferBank', 'BankController@getOngkosTransferBank');
 		});
 
 		Route::group(['prefix' => 'tagihan'], function () {
 			Route::get('getTagihan', 'TagihanController@getTagihan');
 			Route::get('getTagihanPelanggan', 'TagihanController@getTagihanPelanggan');
+			Route::post('getOngkosTagihan', 'TagihanController@getOngkosTagihan');
 		});
 
 		Route::group(['prefix' => 'registrasi'], function () {

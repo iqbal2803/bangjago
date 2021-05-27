@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AppHelper;
 use App\Models\Tagihan;
+use App\Models\Tagihan_Ongkos;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use CoreComponentRepository;
@@ -49,8 +50,20 @@ class TagihanController extends Controller
         } 
     
         $tagihan->nama_tagihan =  $request->nama_tagihan;
-        $tagihan->biaya_tarik_tunai =  $request->biaya_tarik_tunai;
         $tagihan->save();
+
+        $jumlah_data=$request->txtCount;
+        if($jumlah_data>0){
+            for($i=0;$i<$jumlah_data;$i++){
+
+                $tagihan_ongkos = new Tagihan_Ongkos;
+                $tagihan_ongkos->tagihan_id =  $tagihan->id;
+                $tagihan_ongkos->nominal_awal =  $request->nominal_awal[$i];
+                $tagihan_ongkos->nominal_akhir =  $request->nominal_akhir[$i];
+                $tagihan_ongkos->ongkos_tagihan = $request->ongkos_tagihan[$i];
+                $tagihan_ongkos->save();
+            }
+        }
         
         return redirect('tagihan')->with('message', 'Tagihan has been insert successfully!');
     }
@@ -58,6 +71,9 @@ class TagihanController extends Controller
     public function edit_tagihan($id)
     {
         $data['tagihan'] = Tagihan::where('id',$id)->first();
+        $dt_tagihan_ongkos = Tagihan_Ongkos::where('tagihan_id',$id)->get();
+        $data['dt_tagihan_ongkos'] = $dt_tagihan_ongkos;
+        $data['jumlah_tagihan_ongkos'] = count($dt_tagihan_ongkos);
         return view('tagihan.edit_tagihan',$data);
     }
 
@@ -81,15 +97,33 @@ class TagihanController extends Controller
         }
     
         $tagihan->nama_tagihan =  $request->nama_tagihan;
-        $tagihan->biaya_tarik_tunai =  $request->biaya_tarik_tunai;
         $tagihan->save();
+
+        $dt_tagihan=Tagihan_Ongkos::where('tagihan_id',$request->id_tagihan)->get();
+        if(count($dt_tagihan)>0){
+            Tagihan_Ongkos::where('tagihan_id',$request->id_tagihan)->delete();
+        }
+            
+        $jumlah_data=$request->txtCount;
+            if($jumlah_data>0){
+                for($i=0;$i<$jumlah_data;$i++){
+
+                    $tagihan_ongkos = new Tagihan_Ongkos;
+                    $tagihan_ongkos->tagihan_id =  $request->id_tagihan;
+                    $tagihan_ongkos->nominal_awal =  $request->nominal_awal[$i];
+                    $tagihan_ongkos->nominal_akhir =  $request->nominal_akhir[$i];
+                    $tagihan_ongkos->ongkos_tagihan = $request->ongkos_tagihan[$i];
+                    $tagihan_ongkos->save();
+                }
+            }
+        
         
         return redirect('tagihan')->with('message', 'Tagihan has been updated successfully!');
     }
 
     public function hapus_tagihan($id)
     {
-        if(tagihan::destroy($id)){
+        if(Tagihan::destroy($id)){
             return redirect('tagihan')->with('message', 'Tagihan has been deleted successfully!');
         }else{
             return redirect('tagihan')->with('danger', 'Something went wrong!');
