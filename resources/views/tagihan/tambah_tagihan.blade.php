@@ -60,7 +60,7 @@
                         <div class="col-sm-3">
                             <input name="btn-tambah-form" id="btn-tambah-form" type="button" value="Tambah" class="btn btn-success">
                             <input name="btn-hapus-form" id="btn-hapus-form" type="button" value="Hapus Ongkos" class="btn btn-danger" disabled="">
-                            <input type="text" name="txtCount" id="txtCount" value="0" style="width: 30px;" />
+                            <input type="hidden" name="txtCount" id="txtCount" value="0" style="width: 30px;" />
                         </div>
                     </div>
 
