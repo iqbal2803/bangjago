@@ -14,7 +14,7 @@ use CoreComponentRepository;
 
 class BankController extends Controller
 {
-    public function getBank()
+    public function getBank(Request $request)
     {   
         try {
 
@@ -22,7 +22,7 @@ class BankController extends Controller
                 return response()->json(['user_not_found'], 404);
             }
 
-            $bank = Bank::all();
+            $bank = Bank::where('jenis_bank',$request->get('jenis_bank'))->get();
             $arrResult = [];
 
             foreach ($bank as $item) {
