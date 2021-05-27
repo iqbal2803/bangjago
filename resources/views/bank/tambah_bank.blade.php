@@ -40,7 +40,7 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="position-relative row form-group">
-                        <label class="col-sm-3 col-form-label">Upload Logo Bank</label>
+                        <label class="col-sm-4">Upload Logo Bank</label>
                         <div class="col-sm-8">
                           <input type="file" name="logo_bank" id="logo_bank" class="input-file" required="">
                         </div>

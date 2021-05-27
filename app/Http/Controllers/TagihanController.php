@@ -40,6 +40,9 @@ class TagihanController extends Controller
 
         $imgName="";
         if ($request->hasFile('logo_tagihan')) {
+            if($request->file('logo_tagihan')->getSize()>config('app.max_img_size')){
+                return redirect()->back()->with('info', config('app.message_max_img_size'));
+            }
 
             $imgName = 'img-'. time(). '-'. AppHelper::generateToken(8). '.'. $request->file('logo_tagihan')->getClientOriginalExtension();
             $img = Image::make($request->file('logo_tagihan')->getRealPath());
@@ -89,6 +92,9 @@ class TagihanController extends Controller
 
         $imgName="";
         if ($request->hasFile('logo_tagihan')) {
+            if($request->file('logo_tagihan')->getSize()>config('app.max_img_size')){
+                return redirect()->back()->with('info', config('app.message_max_img_size'));
+            }
 
             $imgName = 'img-'. time(). '-'. AppHelper::generateToken(8). '.'. $request->file('logo_tagihan')->getClientOriginalExtension();
             $img = Image::make($request->file('logo_tagihan')->getRealPath());

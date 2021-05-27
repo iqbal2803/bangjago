@@ -47,7 +47,7 @@
                     </div>
                     <div class="row">
                       <div class="position-relative row form-group">
-                        <label class="col-sm-3 col-form-label">Upload Logo Tagihan</label>
+                        <label class="col-sm-4">Upload Logo Tagihan</label>
                         <div class="col-sm-8">
                           <input type="file" name="logo_tagihan" id="logo_tagihan" class="input-file">
                           <input type="hidden" class="form-control" name="id_tagihan" id="id_tagihan" value="{{$tagihan->id}}">

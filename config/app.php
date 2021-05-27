@@ -2,6 +2,10 @@
 
 return [
 
+
+    'max_img_size' => 10240,
+    'message_max_img_size' => "Upload File Maksimal 10MB",
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

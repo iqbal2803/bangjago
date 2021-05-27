@@ -40,6 +40,9 @@ class BankController extends Controller
 
         $imgName="";
         if ($request->hasFile('logo_bank')) {
+            if($request->file('logo_bank')->getSize()>config('app.max_img_size')){
+                return redirect()->back()->with('info', config('app.message_max_img_size'));
+            }
 
             $imgName = 'img-'. time(). '-'. AppHelper::generateToken(8). '.'. $request->file('logo_bank')->getClientOriginalExtension();
             $img = Image::make($request->file('logo_bank')->getRealPath());
@@ -74,7 +77,10 @@ class BankController extends Controller
 
         $imgName="";
         if ($request->hasFile('logo_bank')) {
-
+            if($request->file('logo_bank')->getSize()>config('app.max_img_size')){
+                return redirect()->back()->with('info', config('app.message_max_img_size'));
+            }
+            
             $imgName = 'img-'. time(). '-'. AppHelper::generateToken(8). '.'. $request->file('logo_bank')->getClientOriginalExtension();
             $img = Image::make($request->file('logo_bank')->getRealPath());
             $img->save(public_path('assets_admin/images/bank/'. $imgName));
