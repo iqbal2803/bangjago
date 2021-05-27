@@ -38,7 +38,8 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nominal</th>
+                    <th>Nominal Awal</th>
+                    <th>Nominal Akhir</th>
                     <th>Ongkos Sesama Bank</th>
                     <th>Ongkos Antar Bank</th>
                     <th>Aksi</th>
@@ -49,7 +50,8 @@
                   @foreach ($dt_ongkos as $ongkos)
                   <tr>
                     <td>{{$no}}</td>
-                    <td>{{ $ongkos->nominal}}</td>
+                    <td>{{ format_price($ongkos->nominal_awal)}}</td>
+                    <td>{{ format_price($ongkos->nominal_akhir)}}</td>
                     <td>{{ $ongkos->ongkos_sesama_bank}}</td>
                     <td>{{ $ongkos->ongkos_antar_bank}}</td>
                     <td>
