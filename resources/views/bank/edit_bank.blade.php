@@ -46,12 +46,16 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="position-relative row form-group">
-                        <label class="col-sm-4">Upload Logo Bank</label>
-                        <div class="col-sm-8">
-                          <input type="file" name="logo_bank" id="logo_bank" class="input-file">
-                          <input type="hidden" class="form-control" name="id_bank" id="id_bank" value="{{$bank->id}}">
+                      <div class="col-sm-auto">
+                        <!-- select -->
+                        <div class="form-group">
+                          <label>Upload Logo Bank</label>
                         </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <input type="hidden" class="form-control" name="id_bank" id="id_bank" value="{{$bank->id}}">
+                        <input type="file" name="logo_bank" id="logo_bank" class="input-file" required=""><br>
+                          <p style="color:red;">*Ukuran Upload File Maksimal 10MB</p>
                       </div>
                     </div>
                     <div class="row">
