@@ -30,6 +30,7 @@ class BankController extends Controller
                     'id' => $item->id,
                     'nama_bank' => $item->nama_bank,
                     'logo_bank' => asset('assets_admin/images/bank/'.$item->logo_bank),
+                    'jenis_bank' => $item->jenis_bank,
                     'created_at' => $item->created_at,
                     'updated_at' => $item->updated_at
                 ];
