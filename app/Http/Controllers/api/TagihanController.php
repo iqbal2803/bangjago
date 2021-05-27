@@ -124,39 +124,41 @@ class TagihanController extends Controller
                     ->first();
             $arrResult = [];
 
-            if($request->get('nominal')>$tagihan->nominal_akhir){
+            if($tagihan!=null || $tagihan!=""){
+                if($request->get('nominal')>$tagihan->nominal_akhir){
 
-            return response()->json([
-                "error" => false,
-                "message" => "ongkos tidak ditemukan",
-                "data" => [
-                    "tagihan" => $arrResult,
-                ]
-            ]);
+                return response()->json([
+                    "error" => false,
+                    "message" => "ongkos tidak ditemukan",
+                    "data" => [
+                        "tagihan" => $arrResult,
+                    ]
+                ]);
 
-            }else{
+                }else{
 
-            $arrayToPush = [
-                'id' => $tagihan->id,
-                'tagihan_id' => $tagihan->tagihan_id,
-                'nominal_awal' => $tagihan->nominal_awal,
-                'nominal_akhir' => $tagihan->nominal_akhir,
-                'ongkos_tagihan' => $tagihan->ongkos_tagihan,
-                'created_at' => $tagihan->created_at,
-                'updated_at' => $tagihan->updated_at
-            ];
+                $arrayToPush = [
+                    'id' => $tagihan->id,
+                    'tagihan_id' => $tagihan->tagihan_id,
+                    'nominal_awal' => $tagihan->nominal_awal,
+                    'nominal_akhir' => $tagihan->nominal_akhir,
+                    'ongkos_tagihan' => $tagihan->ongkos_tagihan,
+                    'created_at' => $tagihan->created_at,
+                    'updated_at' => $tagihan->updated_at
+                ];
 
-            array_push($arrResult, $arrayToPush);
-            
+                array_push($arrResult, $arrayToPush);
+                
 
-            return response()->json([
-                "error" => false,
-                "message" => "ongkos ditemukan",
-                "data" => [
-                    "bank" => $arrResult,
-                ]
-            ]);
+                return response()->json([
+                    "error" => false,
+                    "message" => "ongkos ditemukan",
+                    "data" => [
+                        "bank" => $arrResult,
+                    ]
+                ]);
 
+                }
             }
 
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
