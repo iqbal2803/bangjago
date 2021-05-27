@@ -159,6 +159,14 @@ class TagihanController extends Controller
                 ]);
 
                 }
+            }else{
+                return response()->json([
+                    "error" => false,
+                    "message" => "ongkos tidak ditemukan",
+                    "data" => [
+                        "tagihan" => $arrResult,
+                    ]
+                ]);
             }
 
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {

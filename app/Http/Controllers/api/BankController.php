@@ -161,6 +161,14 @@ class BankController extends Controller
                 ]);
 
                 }
+            }else{
+                return response()->json([
+                    "error" => false,
+                    "message" => "ongkos tidak ditemukan",
+                    "data" => [
+                        "bank" => $arrResult,
+                    ]
+                ]);
             }
 
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
