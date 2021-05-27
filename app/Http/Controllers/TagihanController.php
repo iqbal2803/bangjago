@@ -74,7 +74,7 @@ class TagihanController extends Controller
     public function edit_tagihan($id)
     {
         $data['tagihan'] = Tagihan::where('id',$id)->first();
-        $dt_tagihan_ongkos = Tagihan_Ongkos::where('tagihan_id',$id)->get();
+        $dt_tagihan_ongkos = Tagihan_Ongkos::where('tagihan_id',$id)->orderBy('nominal_awal')->get();
         $data['dt_tagihan_ongkos'] = $dt_tagihan_ongkos;
         $data['jumlah_tagihan_ongkos'] = count($dt_tagihan_ongkos);
         return view('tagihan.edit_tagihan',$data);

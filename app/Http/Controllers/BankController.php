@@ -112,7 +112,7 @@ class BankController extends Controller
      */
     public function ongkos_transfer()
     {
-        $bank = Bank_Ongkos::where('jenis_transaksi','transfer')->get();
+        $bank = Bank_Ongkos::where('jenis_transaksi','transfer')->orderBy('nominal_awal')->get();
         $data['dt_ongkos'] = $bank;
         return view('bank.ongkos_transfer',$data);
     }
@@ -184,7 +184,7 @@ class BankController extends Controller
      */
     public function ongkos_tarik_tunai()
     {
-        $bank = Bank_Ongkos::where('jenis_transaksi','tarik tunai')->get();
+        $bank = Bank_Ongkos::where('jenis_transaksi','tarik tunai')->orderBy('nominal_awal')->get();
         $data['dt_ongkos'] = $bank;
         return view('bank.ongkos_tarik_tunai',$data);
     }
