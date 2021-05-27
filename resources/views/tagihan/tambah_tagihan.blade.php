@@ -114,7 +114,7 @@ $(document).ready(function(){ // Ketika halaman sudah diload dan siap
               "</div>"+
               "<div class='col-sm-1'>"+
                   "<div class='form-group'>"+
-                      "<label>Nominal</label>"+
+                      "<label>Nominal Akhir</label>"+
                   "</div>"+
               "</div>"+
               "<div class='col-sm-2'>"+
