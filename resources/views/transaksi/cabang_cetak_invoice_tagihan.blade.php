@@ -30,7 +30,7 @@
       } 
 
       #example2 {
-        width: 100%;
+        width: 160px;
         border-collapse: collapse;
       }
 
@@ -101,6 +101,11 @@
 
       
     </div>
+    <table id="example2">
+          <thead >
+            <tr>
+              <th colspan="3" class="strong" style="border-top: 0px;border-bottom: 0px">
     <center><p style="font-size: 7pt;">LAYANAN PELANGGAN<br><br>HUBUNGI KAMI : <br>(021) 1524568<br><br>SMS : 0812 500 250<br><br>EMAIL : service@bangjago.com</p></center>
+  </th></tr></thead></table>
   </body>
   </html>
