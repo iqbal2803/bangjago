@@ -78,17 +78,39 @@ class TransaksiController extends Controller
 
     public function cetak_invoice_transfer($nomor_transaksi)
     {
-
+        $data['transaksi'] = Transaksi_Bank::where('nomor_transaksi',$nomor_transaksi)->where('jenis_transaksi','transfer')->first();
+        $pdf = PDF::setOptions([
+                        'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
+                        'logOutputFile' => storage_path('logs/log.htm'),
+                        'tempDir' => storage_path('logs/')
+                    ])->loadView('transaksi.cabang_cetak_invoice_transfer',$data)->setPaper([5, 0, 164.409, 650]);
+        
+        return $pdf->download('Cetak Invoice Transfer.pdf');
     }
 
     public function cetak_invoice_tarik_tunai($nomor_transaksi)
     {
+        $data['transaksi'] = Transaksi_Bank::where('nomor_transaksi',$nomor_transaksi)->where('jenis_transaksi','tarik tunai')->first();
+        $pdf = PDF::setOptions([
+                        'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
+                        'logOutputFile' => storage_path('logs/log.htm'),
+                        'tempDir' => storage_path('logs/')
+                    ])->loadView('transaksi.cabang_cetak_invoice_tarik_tunai',$data)->setPaper([5, 0, 164.409, 650]);
+        
+        return $pdf->download('Cetak Invoice Tarik Tunai.pdf');
 
     }
 
     public function cetak_invoice_tagihan($nomor_transaksi)
     {
-
+        $data['transaksi'] = Transaksi_Tagihan::where('nomor_transaksi',$nomor_transaksi)->first();
+        $pdf = PDF::setOptions([
+                        'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
+                        'logOutputFile' => storage_path('logs/log.htm'),
+                        'tempDir' => storage_path('logs/')
+                    ])->loadView('transaksi.cabang_cetak_invoice_tagihan',$data)->setPaper([5, 0, 164.409, 650]);
+        
+        return $pdf->download('Cetak Invoice Tagihan.pdf');
     }
 
     public function cetak_riwayat_transaksi_transfer($cabang_id,$filter_bank,$filter_tgl,$filter_search,$filter_status)
