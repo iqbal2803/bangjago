@@ -83,7 +83,7 @@ class TransaksiController extends Controller
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
                         'logOutputFile' => storage_path('logs/log.htm'),
                         'tempDir' => storage_path('logs/')
-                    ])->loadView('transaksi.cabang_cetak_invoice_transfer',$data)->setPaper([5, 0, 164.409, 650]);
+                    ])->loadView('transaksi.cabang_cetak_invoice_transfer',$data)->setPaper([0, 0, 164.409, 500]);
         
         return $pdf->download('Cetak Invoice Transfer.pdf');
     }
@@ -95,7 +95,7 @@ class TransaksiController extends Controller
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
                         'logOutputFile' => storage_path('logs/log.htm'),
                         'tempDir' => storage_path('logs/')
-                    ])->loadView('transaksi.cabang_cetak_invoice_tarik_tunai',$data)->setPaper([5, 0, 164.409, 650]);
+                    ])->loadView('transaksi.cabang_cetak_invoice_tarik_tunai',$data)->setPaper([0, 0, 164.409, 500]);
         
         return $pdf->download('Cetak Invoice Tarik Tunai.pdf');
 
@@ -108,7 +108,7 @@ class TransaksiController extends Controller
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
                         'logOutputFile' => storage_path('logs/log.htm'),
                         'tempDir' => storage_path('logs/')
-                    ])->loadView('transaksi.cabang_cetak_invoice_tagihan',$data)->setPaper([5, 0, 164.409, 650]);
+                    ])->loadView('transaksi.cabang_cetak_invoice_tagihan',$data)->setPaper([0, 0, 164.409, 500]);
         
         return $pdf->download('Cetak Invoice Tagihan.pdf');
     }

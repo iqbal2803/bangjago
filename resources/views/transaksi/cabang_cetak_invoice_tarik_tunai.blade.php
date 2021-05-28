@@ -23,7 +23,7 @@
 
       #example2 th{
         font-size: 8pt;
-        padding-top: 5px;"
+        padding-top: 5px;
         text-align: center;
         border-top: 1px solid black;
         border-bottom: 1px solid black;
@@ -40,7 +40,15 @@
   <body>
     <div>
       <div>
-        <p style="font-size: 10pt;">TARIK TUNAI BANG JAGO<br>{{tanggal_indonesia(date('Y-m-d'))}}</p>
+        <table id="example2">
+          <thead >
+            <tr>
+              <th colspan="3" class="strong" style="border-top: 0px">
+        <p style="font-size: 10pt;"><center> TARIK TUNAI<br> BANG JAGO<br> {{tanggal_indonesia(date('Y-m-d'))}}</center></p>
+      </th>
+    </tr>
+  </thead>
+</table>
       </div>
       <div>
         <table id="example2">
@@ -95,6 +103,6 @@
 
       
     </div>
-    <center><p style="font-size: 10pt;">LAYANAN PELANGGAN<br><br>HUBUNGI KAMI : (021) 1524568<br><br>SMS : 0812 500 250<br><br>EMAIL : service@bangjago.com</p></center>
+    <center><p style="font-size: 7pt;">LAYANAN PELANGGAN<br><br>HUBUNGI KAMI : <br>(021) 1524568<br><br>SMS : 0812 500 250<br><br>EMAIL : service@bangjago.com</p></center>
   </body>
   </html>
