@@ -53,7 +53,7 @@
           <thead >
             <tr>
               <th colspan="3" class="strong">
-                <p style="font-size: 10pt;"><center>JL GUBENG KERTAJAYA RT.05 RW.011<br>SURABAYA 60012</center></p>
+                <p style="font-size: 10pt;"><center>{{$cabang->alamat}}<br>{{$cabang->nama_kota}} {{$cabang->kode_pos}}</center></p>
               </th>
             </tr>
           </thead>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\AppHelper;
+use App\Models\Provinces;
+use App\Models\Cities;
 use App\Models\Cabang;
 use App\Models\Role;
 use App\Models\Staff;
@@ -115,8 +117,8 @@ class CabangController extends Controller
     {
         try {
 
-            $url = "province";
-            $response = AppHelper::request_raja_ongkir($url,"GET","");
+            //$url = "province";
+            $response = Provinces::all();
             $result =[];
             foreach ($response as $key => $value) {
                 # code...
@@ -135,15 +137,15 @@ class CabangController extends Controller
     {
         try {
 
-            $url = "city";
+            // $url = "city";
             if ($request->id_provinsi=="") {
                 
-                $url = $url."?province=1";
+                $province = 1;
             }else{
-                $url = $url."?province=".$request->id_provinsi;
+                $province = $request->id_provinsi;
             }
 
-            $response = AppHelper::request_raja_ongkir($url,"GET","");
+            $response = Cities::where('province_id',$province)->get();
             $result =[];
             foreach ($response as $key => $value) {
                 # code...

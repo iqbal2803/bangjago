@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-orange elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a class="brand-link">
       <img src="{{ asset('dist/img/logo_bangjago.jpg')}}" alt="BangJago Logo" class="brand-image elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Bang Jago</span>
     </a>

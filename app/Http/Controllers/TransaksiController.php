@@ -78,7 +78,18 @@ class TransaksiController extends Controller
 
     public function cetak_invoice_transfer($nomor_transaksi)
     {
-        $data['transaksi'] = Transaksi_Bank::where('nomor_transaksi',$nomor_transaksi)->where('jenis_transaksi','transfer')->first();
+        $transaksi = Transaksi_Bank::where('nomor_transaksi',$nomor_transaksi)->where('jenis_transaksi','transfer')->first();
+        $data['transaksi'] = $transaksi;
+        $data['cabang'] = Cabang::where('id',$transaksi->cabang_id)
+                        ->join('provinces as b', 'cabang.provinsi_id', '=', 'b.province_id')
+                        ->join('cities as c', 'cabang.kota_id', '=', 'c.city_id')
+                        ->select(
+                        'cabang.*',
+                        'b.province as nama_provinsi',
+                        'c.city_name as nama_kota',
+                        'c.postal_code as kode_pos'
+                        )
+                        ->first();
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
                         'logOutputFile' => storage_path('logs/log.htm'),
@@ -90,7 +101,18 @@ class TransaksiController extends Controller
 
     public function cetak_invoice_tarik_tunai($nomor_transaksi)
     {
-        $data['transaksi'] = Transaksi_Bank::where('nomor_transaksi',$nomor_transaksi)->where('jenis_transaksi','tarik tunai')->first();
+        $transaksi = Transaksi_Bank::where('nomor_transaksi',$nomor_transaksi)->where('jenis_transaksi','tarik tunai')->first();
+        $data['transaksi'] = $transaksi;
+        $data['cabang'] = Cabang::where('id',$transaksi->cabang_id)
+                        ->join('provinces as b', 'cabang.provinsi_id', '=', 'b.province_id')
+                        ->join('cities as c', 'cabang.kota_id', '=', 'c.city_id')
+                        ->select(
+                        'cabang.*',
+                        'b.province as nama_provinsi',
+                        'c.city_name as nama_kota',
+                        'c.postal_code as kode_pos'
+                        )
+                        ->first();
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
                         'logOutputFile' => storage_path('logs/log.htm'),
@@ -103,7 +125,18 @@ class TransaksiController extends Controller
 
     public function cetak_invoice_tagihan($nomor_transaksi)
     {
-        $data['transaksi'] = Transaksi_Tagihan::where('nomor_transaksi',$nomor_transaksi)->first();
+        $transaksi = Transaksi_Tagihan::where('nomor_transaksi',$nomor_transaksi)->first();
+        $data['transaksi'] = $transaksi;
+        $data['cabang'] = Cabang::where('id',$transaksi->cabang_id)
+                        ->join('provinces as b', 'cabang.provinsi_id', '=', 'b.province_id')
+                        ->join('cities as c', 'cabang.kota_id', '=', 'c.city_id')
+                        ->select(
+                        'cabang.*',
+                        'b.province as nama_provinsi',
+                        'c.city_name as nama_kota',
+                        'c.postal_code as kode_pos'
+                        )
+                        ->first();
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
                         'logOutputFile' => storage_path('logs/log.htm'),
