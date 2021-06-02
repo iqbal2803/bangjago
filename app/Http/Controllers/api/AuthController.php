@@ -51,7 +51,9 @@ class AuthController extends Controller
         return response()->json([
             auth()->user(),
             "role" =>$user->role,
-            "cabang" =>$user->cabang
+            "cabang" =>$user->cabang,
+            "provinsi" =>$user->cabang->getProvinsi,
+            "kota" =>$user->cabang->getKota
         ]
         );
     }

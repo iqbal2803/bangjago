@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Role;
 use App\Models\Cabang;
+use App\Models\Provinces;
+use App\Models\Cities;
 
 class User extends Authenticatable implements JWTSubject
 {

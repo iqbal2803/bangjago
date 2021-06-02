@@ -3,7 +3,7 @@
 return [
 
 
-    'max_img_size' => 10240,
+    'max_img_size' => 81920,
     'message_max_img_size' => "Upload File Maksimal 10MB",
 
     /*

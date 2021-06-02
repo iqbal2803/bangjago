@@ -195,4 +195,105 @@ class TransaksiController extends Controller
         }
     }
     
+    public function getTransaksiBankByNomorTransaksi(Request $request)
+    {   
+        try {
+
+            if (!$user = JWTAuth::parseToken()->authenticate()) {
+                return response()->json(['user_not_found'], 404);
+            }
+
+            $transaksi = Transaksi_Bank::where('nomor_transaksi',$request->get('nomor_transaksi'))->get();
+            $arrResult = [];
+
+            foreach ($transaksi as $item) {
+                $arrayToPush = [
+                    'id' => $item->id,
+                    'cabang_id' => $item->cabang_id,
+                    'jenis_transaksi' => $item->jenis_transaksi,
+                    'nomor_transaksi' => $item->nomor_transaksi,
+                    'nama_bank' => $item->nama_bank,
+                    'nomor_rekening' => $item->nomor_rekening,
+                    'nama_pemilik' => $item->nama_pemilik,
+                    'nominal_transfer' => $item->nominal_transfer,
+                    'biaya_ongkos' => $item->biaya_ongkos,
+                    'total' => $item->total,
+                    'status' => $item->status,
+                    'berita' => $item->berita,
+                    'created_at' => hari_tanggal_jam_indonesia(\Carbon\Carbon::parse($item->created_at)->format('Y-m-d-H:i')),
+                    'updated_at' => hari_tanggal_jam_indonesia(\Carbon\Carbon::parse($item->updated_at)->format('Y-m-d-H:i'))
+                ];
+
+                array_push($arrResult, $arrayToPush);
+            }
+
+            return response()->json([
+                "error" => false,
+                "data" => [
+                    "transaksi" => $arrResult,
+                ]
+            ]);
+
+        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+
+            return response()->json(['token_expired'], $e->getStatusCode());
+        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+
+            return response()->json(['token_invalid'], $e->getStatusCode());
+        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+
+            return response()->json(['token_absent'], $e->getStatusCode());
+        }
+        
+    }
+
+    public function getTransaksiTagihanByNomorTransaksi(Request $request)
+    {   
+        try {
+
+            if (!$user = JWTAuth::parseToken()->authenticate()) {
+                return response()->json(['user_not_found'], 404);
+            }
+
+            $transaksi = Transaksi_Tagihan::where('nomor_transaksi',$request->get('nomor_transaksi'))->get();
+            $arrResult = [];
+
+            foreach ($transaksi as $item) {
+                $arrayToPush = [
+                    'id' => $item->id,
+                    'cabang_id' => $item->cabang_id,
+                    'nomor_transaksi' => $item->nomor_transaksi,
+                    'jenis_tagihan' => $item->jenis_tagihan,
+                    'nomor_id' => $item->nomor_id,
+                    'nama_pemilik' => $item->nama_pemilik,
+                    'nominal_tagihan' => $item->nominal_tagihan,
+                    'biaya_ongkos' => $item->biaya_ongkos,
+                    'total' => $item->total,
+                    'status' => $item->status,
+                    'created_at' => hari_tanggal_jam_indonesia(\Carbon\Carbon::parse($item->created_at)->format('Y-m-d-H:i')),
+                    'updated_at' => hari_tanggal_jam_indonesia(\Carbon\Carbon::parse($item->updated_at)->format('Y-m-d-H:i'))
+                ];
+
+                array_push($arrResult, $arrayToPush);
+            }
+
+            return response()->json([
+                "error" => false,
+                "data" => [
+                    "transaksi" => $arrResult,
+                ]
+            ]);
+
+        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+
+            return response()->json(['token_expired'], $e->getStatusCode());
+        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+
+            return response()->json(['token_invalid'], $e->getStatusCode());
+        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+
+            return response()->json(['token_absent'], $e->getStatusCode());
+        }
+        
+    }
 }

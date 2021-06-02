@@ -2,7 +2,9 @@
   <aside class="main-sidebar sidebar-dark-orange elevation-4">
     <!-- Brand Logo -->
     <a class="brand-link">
-      <img src="{{ asset('dist/img/logo_bangjago.jpg')}}" alt="BangJago Logo" class="brand-image elevation-3" style="opacity: .8">
+      @if($profile->logo_profil!="")
+      <img src="{{ asset('assets_admin/images/profil/'.$profile->logo_profil) }}" alt="BangJago Logo" class="brand-image elevation-3" style="opacity: .8">
+      @endif
       <span class="brand-text font-weight-light">Bang Jago</span>
     </a>
 
@@ -201,6 +203,16 @@
                 </a>
               </li>
             </ul>
+          </li>
+          @endif
+          @if(Auth::user()->role->nama_role=='Pemilik')
+          <li class="nav-item">
+            <a href="{{route('profil.edit_profil')}}" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Pengaturan Profil
+              </p>
+            </a>
           </li>
           @endif
         </ul>

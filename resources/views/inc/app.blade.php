@@ -34,6 +34,22 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css')}}">
 </head>
+    @php
+    $profile = DB::table('profil')
+            ->select('id', 'logo_profil', 'hubungi_kami', 'sms', 'email'
+            )
+            ->first();
+    if($profile=='' || $profile==null){
+    $profile =(object)[
+                'id' => "",
+                'logo_profil' => "",
+                'hubungi_kami' => "",
+                'sms' => "",
+                'email' => ""
+            ];
+    }
+
+    @endphp
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
 

@@ -51,6 +51,12 @@ Route::group(['namespace' => 'api'], function () {
 			Route::post('transfer_uang', 'TransaksiController@createTransaksiTransferUang');
 			Route::post('tarik_tunai', 'TransaksiController@createTransaksiPenarikanTunai');
 			Route::post('bayar_tagihan', 'TransaksiController@createTransaksiBayarTagihan');
+			Route::post('getTransaksiBankByNomorTransaksi', 'TransaksiController@getTransaksiBankByNomorTransaksi');
+			Route::post('getTransaksiTagihanByNomorTransaksi', 'TransaksiController@getTransaksiTagihanByNomorTransaksi');
+		});
+
+		Route::group(['prefix' => 'profil'], function () {
+			Route::get('getProfil', 'ProfilController@getProfil');
 		});
 	});
 

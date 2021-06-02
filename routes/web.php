@@ -123,5 +123,8 @@ Route::get('/cabang/transaksi_transfer/{id}', 'LaporanController@transaksi_trans
 Route::get('/cabang/transaksi_tarik_tunai/{id}', 'LaporanController@transaksi_tarik_tunai')->name('cabang.transaksi_tarik_tunai');
 Route::get('/cabang/transaksi_tagihan/{id}', 'LaporanController@transaksi_tagihan')->name('cabang.transaksi_tagihan');
 
+//PENGATURAN PROFIL
+Route::get('/profil/edit_profil', 'ProfilController@edit_profil')->name('profil.edit_profil');
+Route::post('/profil/update_profil', 'ProfilController@update_profil')->name('profil.update_profil');
 });
 
