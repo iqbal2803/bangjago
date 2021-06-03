@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AppHelper;
 use App\Models\Bank;
 use App\Models\Cabang;
+use App\Models\Profil;
 use App\Models\Role;
 use App\Models\Tagihan;
 use App\Models\Transaksi_Bank;
