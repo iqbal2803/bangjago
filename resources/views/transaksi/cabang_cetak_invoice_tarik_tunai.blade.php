@@ -107,7 +107,7 @@
           <thead >
             <tr>
               <th colspan="3" class="strong" style="border-top: 0px;border-bottom: 0px">
-    <center><p style="font-size: 7pt;">LAYANAN PELANGGAN<br><br>HUBUNGI KAMI : <br>{{$profile->hubungi_kami) }}<br><br>SMS : {{$profile->sms) }}<br><br>EMAIL : {{$profile->email) }}</p></center>
+    <center><p style="font-size: 7pt;">LAYANAN PELANGGAN<br><br>HUBUNGI KAMI : <br>{{$profile->hubungi_kami }}<br><br>SMS : {{$profile->sms }}<br><br>EMAIL : {{$profile->email }}</p></center>
   </th></tr></thead></table>
   </body>
   </html>
