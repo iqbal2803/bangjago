@@ -88,6 +88,18 @@ class LaporanController extends Controller
 
         $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
         $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
+        $profil = Profil::where('id',1)->first();
+        if($profil==null){
+            $data['profile'] =(object)[
+                'id' => "",
+                'logo_profil' => "",
+                'hubungi_kami' => "",
+                'sms' => "",
+                'email' => ""
+            ];
+        }else{
+            $data['profile'] = $profil;
+        }
 
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
@@ -131,6 +143,18 @@ class LaporanController extends Controller
 
         $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
         $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
+        $profil = Profil::where('id',1)->first();
+        if($profil==null){
+            $data['profile'] =(object)[
+                'id' => "",
+                'logo_profil' => "",
+                'hubungi_kami' => "",
+                'sms' => "",
+                'email' => ""
+            ];
+        }else{
+            $data['profile'] = $profil;
+        }
 
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
@@ -173,6 +197,18 @@ class LaporanController extends Controller
 
         $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
         $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
+        $profil = Profil::where('id',1)->first();
+        if($profil==null){
+            $data['profile'] =(object)[
+                'id' => "",
+                'logo_profil' => "",
+                'hubungi_kami' => "",
+                'sms' => "",
+                'email' => ""
+            ];
+        }else{
+            $data['profile'] = $profil;
+        }
 
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,

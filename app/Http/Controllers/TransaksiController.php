@@ -90,6 +90,19 @@ class TransaksiController extends Controller
                         'c.postal_code as kode_pos'
                         )
                         ->first();
+        $profil = Profil::where('id',1)->first();
+        if($profil==null){
+            $data['profile'] =(object)[
+                'id' => "",
+                'logo_profil' => "",
+                'hubungi_kami' => "",
+                'sms' => "",
+                'email' => ""
+            ];
+        }else{
+            $data['profile'] = $profil;
+        }
+                        
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
                         'logOutputFile' => storage_path('logs/log.htm'),
@@ -113,6 +126,19 @@ class TransaksiController extends Controller
                         'c.postal_code as kode_pos'
                         )
                         ->first();
+        $profil = Profil::where('id',1)->first();
+        if($profil==null){
+            $data['profile'] =(object)[
+                'id' => "",
+                'logo_profil' => "",
+                'hubungi_kami' => "",
+                'sms' => "",
+                'email' => ""
+            ];
+        }else{
+            $data['profile'] = $profil;
+        }
+
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
                         'logOutputFile' => storage_path('logs/log.htm'),
@@ -137,6 +163,19 @@ class TransaksiController extends Controller
                         'c.postal_code as kode_pos'
                         )
                         ->first();
+        $profil = Profil::where('id',1)->first();
+        if($profil==null){
+            $data['profile'] =(object)[
+                'id' => "",
+                'logo_profil' => "",
+                'hubungi_kami' => "",
+                'sms' => "",
+                'email' => ""
+            ];
+        }else{
+            $data['profile'] = $profil;
+        }
+
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
                         'logOutputFile' => storage_path('logs/log.htm'),
@@ -182,6 +221,18 @@ class TransaksiController extends Controller
 
         $data['cabang']=Cabang::where('id',$cabang_id)->first();
         $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
+        $profil = Profil::where('id',1)->first();
+        if($profil==null){
+            $data['profile'] =(object)[
+                'id' => "",
+                'logo_profil' => "",
+                'hubungi_kami' => "",
+                'sms' => "",
+                'email' => ""
+            ];
+        }else{
+            $data['profile'] = $profil;
+        }
 
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
@@ -228,6 +279,18 @@ class TransaksiController extends Controller
 
         $data['cabang']=Cabang::where('id',$cabang_id)->first();
         $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
+        $profil = Profil::where('id',1)->first();
+        if($profil==null){
+            $data['profile'] =(object)[
+                'id' => "",
+                'logo_profil' => "",
+                'hubungi_kami' => "",
+                'sms' => "",
+                'email' => ""
+            ];
+        }else{
+            $data['profile'] = $profil;
+        }
 
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
@@ -274,6 +337,18 @@ class TransaksiController extends Controller
 
         $data['cabang']=Cabang::where('id',$cabang_id)->first();
         $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
+        $profil = Profil::where('id',1)->first();
+        if($profil==null){
+            $data['profile'] =(object)[
+                'id' => "",
+                'logo_profil' => "",
+                'hubungi_kami' => "",
+                'sms' => "",
+                'email' => ""
+            ];
+        }else{
+            $data['profile'] = $profil;
+        }
 
         $pdf = PDF::setOptions([
                         'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
