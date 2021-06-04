@@ -88,11 +88,12 @@ class LaporanController extends Controller
         
 
         $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
-        $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
+        $data['transaksi'] = $transaksi->where('status','Selesai')->OrderBy('created_at','desc')->get();
         $profil = Profil::where('id',1)->first();
         if($profil==null){
             $data['profile'] =(object)[
                 'id' => "",
+                'alamat' => "",
                 'logo_profil' => "",
                 'hubungi_kami' => "",
                 'sms' => "",
@@ -143,11 +144,12 @@ class LaporanController extends Controller
 
 
         $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
-        $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
+        $data['transaksi'] = $transaksi->where('status','Selesai')->OrderBy('created_at','desc')->get();
         $profil = Profil::where('id',1)->first();
         if($profil==null){
             $data['profile'] =(object)[
                 'id' => "",
+                'alamat' => "",
                 'logo_profil' => "",
                 'hubungi_kami' => "",
                 'sms' => "",
@@ -197,11 +199,12 @@ class LaporanController extends Controller
          }
 
         $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
-        $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
+        $data['transaksi'] = $transaksi->where('status','Selesai')->OrderBy('created_at','desc')->get();
         $profil = Profil::where('id',1)->first();
         if($profil==null){
             $data['profile'] =(object)[
                 'id' => "",
+                'alamat' => "",
                 'logo_profil' => "",
                 'hubungi_kami' => "",
                 'sms' => "",

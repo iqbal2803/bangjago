@@ -62,7 +62,12 @@
                   </tr>
                   </thead>
                   <tbody>
-                  @php $no=1; @endphp
+                  @php 
+                  $no=1;
+                  $total_nominal=0;
+                  $total_biaya_ongkos=0;
+                  $total_semua=0; 
+                  @endphp
                   @foreach ($transaksi as $data)
                   <tr>
                     <td>{{$no}}</td>
@@ -75,8 +80,24 @@
                     <td>{{ format_price($data->biaya_ongkos)}}</td>
                     <td>{{ format_price($data->total)}}</td>
                   </tr>
-                  @php $no++; @endphp
+                  @php 
+                  $no++;
+                  $total_nominal=$total_nominal+$data->nominal_tagihan;
+                  $total_biaya_ongkos=$total_biaya_ongkos+$data->biaya_ongkos;
+                  $total_semua=$total_semua+$data->total; 
+                  @endphp
                   @endforeach
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ format_price($total_nominal)}}</td>
+                    <td>{{ format_price($total_biaya_ongkos)}}</td>
+                    <td>{{ format_price($total_total)}}</td>
+                  </tr>
                   </tbody>
                 </table>
         </div>
