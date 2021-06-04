@@ -46,7 +46,7 @@
 
         </div>
         <div>
-            <table id="example2" style="border-collapse:collapse;border: 1px solid black;">
+            <table id="example2">
                   <thead >
                   <tr>
                     <th>No</th>
@@ -87,7 +87,7 @@
                   @endphp
                   @endforeach
                   <tr>
-                    <td></td>
+                    <td colspan="6"></td>
                     <td>{{ format_price($total_nominal)}}</td>
                     <td>{{ format_price($total_biaya_ongkos)}}</td>
                     <td>{{ format_price($total_semua)}}</td>
