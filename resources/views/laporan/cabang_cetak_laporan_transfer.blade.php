@@ -7,6 +7,7 @@
     <style>
     #example2 tr{
       border: 1px solid black;
+      border-collapse: collapse;
     }
     #example2 td{
         text-align: center;
@@ -22,6 +23,7 @@
 
     #example2 {
       width: 100%;
+      border-collapse: collapse;
     }
     </style>
 </head>
