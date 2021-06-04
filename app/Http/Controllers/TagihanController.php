@@ -45,8 +45,8 @@ class TagihanController extends Controller
             }
 
             $imgName = 'img-'. time(). '-'. AppHelper::generateToken(8). '.'. $request->file('logo_tagihan')->getClientOriginalExtension();
-            $img = Image::make($request->file('logo_tagihan')->path());
-            $img->save(public_path('assets_admin/images/tagihan/'. $imgName));
+            $img = Image::make($request->file('logo_tagihan')->getRealPath());
+            $img->save('public/assets_admin/images/tagihan/'. $imgName);
             $tagihan->logo_tagihan = $imgName;
         }else{
             return back();
@@ -97,7 +97,7 @@ class TagihanController extends Controller
             }
 
             $imgName = 'img-'. time(). '-'. AppHelper::generateToken(8). '.'. $request->file('logo_tagihan')->getClientOriginalExtension();
-            $img = Image::make($request->file('logo_tagihan')->path());
+            $img = Image::make($request->file('logo_tagihan')->getRealPath());
             $img->save(public_path('assets_admin/images/tagihan/'. $imgName));
             $tagihan->logo_tagihan = $imgName;
         }
