@@ -96,7 +96,7 @@
                     <td></td>
                     <td>{{ format_price($total_nominal)}}</td>
                     <td>{{ format_price($total_biaya_ongkos)}}</td>
-                    <td>{{ format_price($total_total)}}</td>
+                    <td>{{ format_price($total_semua)}}</td>
                   </tr>
                   </tbody>
                 </table>
