@@ -26,7 +26,7 @@ class ProfilController extends Controller
             $profil = Profil::where('id',1)->get();
             $arrResult = [];
 
-            foreach ($bank as $item) {
+            foreach ($profil as $item) {
                 $arrayToPush = [
                     'id' => $item->id,
                     'logo_profil' => asset('assets_admin/images/profil/'.$item->logo_profil),
