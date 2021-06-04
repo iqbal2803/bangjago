@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <style>
     #example2 tr{
-      border: 1px solid black;
+      border: none;
       border-collapse: collapse;
     }
     #example2 td{
