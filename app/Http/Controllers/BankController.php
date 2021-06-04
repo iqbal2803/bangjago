@@ -45,7 +45,7 @@ class BankController extends Controller
             }
 
             $imgName = 'img-'. time(). '-'. AppHelper::generateToken(8). '.'. $request->file('logo_bank')->getClientOriginalExtension();
-            $img = Image::make($request->file('logo_bank')->getRealPath());
+            $img = Image::make($request->file('logo_bank')->path());
             $img->save(public_path('assets_admin/images/bank/'. $imgName));
             $bank->logo_bank = $imgName;
         }else{
@@ -82,7 +82,7 @@ class BankController extends Controller
             }
             
             $imgName = 'img-'. time(). '-'. AppHelper::generateToken(8). '.'. $request->file('logo_bank')->getClientOriginalExtension();
-            $img = Image::make($request->file('logo_bank')->getRealPath());
+            $img = Image::make($request->file('logo_bank')->path());
             $img->save(public_path('assets_admin/images/bank/'. $imgName));
             $bank->logo_bank = $imgName;
         }
