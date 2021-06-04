@@ -24,11 +24,27 @@ class ProfilController extends Controller
             }
 
             $profil = Profil::where('id',1)->get();
+            $arrResult = [];
+
+            foreach ($bank as $item) {
+                $arrayToPush = [
+                    'id' => $item->id,
+                    'logo_profil' => asset('assets_admin/images/profil/'.$item->logo_profil),
+                    'alamat' => $item->alamat,
+                    'hubungi_kami' => $item->hubungi_kami,
+                    'sms' => $item->sms,
+                    'email' => $item->email,
+                    'created_at' => $item->created_at,
+                    'updated_at' => $item->updated_at
+                ];
+
+                array_push($arrResult, $arrayToPush);
+            }
 
             return response()->json([
                 "error" => false,
                 "data" => [
-                    "profil" => $profil,
+                    "profil" => $arrResult,
                 ]
             ]);
 

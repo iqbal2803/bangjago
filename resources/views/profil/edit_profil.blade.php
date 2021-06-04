@@ -62,6 +62,17 @@
                       <div class="col-sm-1">
                         <!-- select -->
                         <div class="form-group">
+                          <label>Alamat</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-2">
+                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat" value="{{$profil->alamat}}" required="">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-1">
+                        <!-- select -->
+                        <div class="form-group">
                           <label>Hubungi Kami</label>
                         </div>
                       </div>
