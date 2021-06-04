@@ -7,15 +7,16 @@
     <style>
     #example2 tr{
       border: 1px solid black;
-      border-collapse: collapse;
     }
     #example2 td{
+      border-collapse: collapse;
         text-align: center;
       border: 1px solid black;
       font-size: 11pt;
     }
 
     #example2 th{
+      border-collapse: collapse;
         text-align: center;
       border: 1px solid black;
       font-size: 11pt;
@@ -23,7 +24,6 @@
 
     #example2 {
       width: 100%;
-      border-collapse: collapse;
     }
     </style>
 </head>
@@ -88,8 +88,8 @@
                   $total_semua=$total_semua+$data->total; 
                   @endphp
                   @endforeach
-                  <tr style="border-collapse:collapse;border-left: 0px;border-bottom: 0px;border-right: 0px">
-                    <td colspan="6" style="border-collapse:collapse;border-left: 0px;border-bottom: 0px;border-right: 0px"></td>
+                  <tr>
+                    <td></td>
                     <td>{{ format_price($total_nominal)}}</td>
                     <td>{{ format_price($total_biaya_ongkos)}}</td>
                     <td>{{ format_price($total_semua)}}</td>
