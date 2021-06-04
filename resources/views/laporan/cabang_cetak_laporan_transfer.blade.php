@@ -6,17 +6,15 @@
     <meta charset="UTF-8">
     <style>
     #example2 tr{
-      border: none;
-      border-collapse: collapse;
+      font-size: 11pt;
     }
     #example2 td{
-        text-align: center;
-      border: 1px solid black;
+      text-align: center;
       font-size: 11pt;
     }
 
     #example2 th{
-        text-align: center;
+      text-align: center;
       border: 1px solid black;
       font-size: 11pt;
     }
@@ -70,16 +68,16 @@
                   $total_semua=0; 
                   @endphp
                   @foreach ($transaksi as $data)
-                  <tr>
-                    <td>{{$no}}</td>
-                    <td>{{ $data->nomor_transaksi}}</td>
-                    <td>{{ Carbon\Carbon::parse($data->created_at)->format('d-m-Y H:i:s') }}</td>
-                    <td>{{ $data->nama_bank}}</td>
-                    <td>{{ $data->nomor_rekening}}</td>
-                    <td>{{ $data->nama_pemilik}}</td>
-                    <td>{{ format_price($data->nominal_transfer)}}</td>
-                    <td>{{ format_price($data->biaya_ongkos)}}</td>
-                    <td>{{ format_price($data->total)}}</td>
+                  <tr style="border:1px solid black;">
+                    <td style="border:1px solid black;">{{$no}}</td>
+                    <td style="border:1px solid black;">{{ $data->nomor_transaksi}}</td>
+                    <td style="border:1px solid black;">{{ Carbon\Carbon::parse($data->created_at)->format('d-m-Y H:i:s') }}</td>
+                    <td style="border:1px solid black;">{{ $data->nama_bank}}</td>
+                    <td style="border:1px solid black;">{{ $data->nomor_rekening}}</td>
+                    <td style="border:1px solid black;">{{ $data->nama_pemilik}}</td>
+                    <td style="border:1px solid black;">{{ format_price($data->nominal_transfer)}}</td>
+                    <td style="border:1px solid black;">{{ format_price($data->biaya_ongkos)}}</td>
+                    <td style="border:1px solid black;">{{ format_price($data->total)}}</td>
                   </tr>
                   @php 
                   $no++;
@@ -90,9 +88,9 @@
                   @endforeach
                   <tr>
                     <td colspan="6"></td>
-                    <td>{{ format_price($total_nominal)}}</td>
-                    <td>{{ format_price($total_biaya_ongkos)}}</td>
-                    <td>{{ format_price($total_semua)}}</td>
+                    <td style="border:1px solid black;">{{ format_price($total_nominal)}}</td>
+                    <td style="border:1px solid black;">{{ format_price($total_biaya_ongkos)}}</td>
+                    <td style="border:1px solid black;">{{ format_price($total_semua)}}</td>
                   </tr>
                   </tbody>
                 </table>
