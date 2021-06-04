@@ -14,6 +14,12 @@
       border: 1px solid black;
       font-size: 11pt;
     }
+
+     #example2 td .noborder{
+        text-align: center;
+      border:none;
+      font-size: 11pt;
+    }
     #example2 th{
         text-align: center;
       border: 1px solid black;
@@ -88,7 +94,7 @@
                   @endphp
                   @endforeach
                   <tr>
-                    <td colspan="6" style="border-collapse:collapse;border-left: 0px;border-bottom: 0px;border-right: 0px"></td>
+                    <td colspan="6" class="noborder"></td>
                     <td>{{ format_price($total_nominal)}}</td>
                     <td>{{ format_price($total_biaya_ongkos)}}</td>
                     <td>{{ format_price($total_semua)}}</td>
