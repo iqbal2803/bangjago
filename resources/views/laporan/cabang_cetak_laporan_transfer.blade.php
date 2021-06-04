@@ -88,7 +88,7 @@
                   @endphp
                   @endforeach
                   <tr>
-                    <td colspan="6" style="border: 0px;"></td>
+                    <td colspan="6" style="border-left: 0px;border-bottom: 0px;border-right: 0px"></td>
                     <td>{{ format_price($total_nominal)}}</td>
                     <td>{{ format_price($total_biaya_ongkos)}}</td>
                     <td>{{ format_price($total_semua)}}</td>
