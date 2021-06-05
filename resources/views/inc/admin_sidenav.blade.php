@@ -144,7 +144,7 @@
             <a href="{{route('laporan.transaksi')}}" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
-                Laporana
+                Laporan
               </p>
             </a>
           </li>
