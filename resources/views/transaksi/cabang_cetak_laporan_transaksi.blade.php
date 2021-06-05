@@ -91,7 +91,7 @@
                   @endphp
                   @endforeach
                   <tr>
-                    <td colspan="6"></td>
+                    <td colspan="5"></td>
                     <td style="border:1px solid black;text-align: center;">Total</td>
                     <td style="border:1px solid black;">{{ format_price($total_nominal)}}</td>
                     <td style="border:1px solid black;">{{ format_price($total_biaya_ongkos)}}</td>
