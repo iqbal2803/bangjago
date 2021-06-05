@@ -62,6 +62,17 @@
                       <div class="col-sm-1">
                         <!-- select -->
                         <div class="form-group">
+                          <label>Nama Aplikasi</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-2">
+                        <input type="text" class="form-control" name="nama_aplikasi" id="nama_aplikasi" placeholder="Nama Aplikasi" value="{{$profil->nama_aplikasi}}" required="">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-1">
+                        <!-- select -->
+                        <div class="form-group">
                           <label>Alamat</label>
                         </div>
                       </div>

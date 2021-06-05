@@ -29,6 +29,7 @@ class ProfilController extends Controller
             foreach ($profil as $item) {
                 $arrayToPush = [
                     'id' => $item->id,
+                    'nama_aplikasi' => $item->nama_aplikasi,
                     'logo_profil' => asset('assets_admin/images/profil/'.$item->logo_profil),
                     'alamat' => $item->alamat,
                     'hubungi_kami' => $item->hubungi_kami,
