@@ -106,7 +106,7 @@ class LaporanController extends Controller
             });
          }
         
-
+        $data['jenis_transaksi'] = $filter_jenis_transaksi;
         $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
         $data['transaksi'] = $transaksi->where('status','Selesai')->OrderBy('created_at','desc')->get();
         $profil = Profil::where('id',1)->first();
