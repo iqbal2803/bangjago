@@ -63,9 +63,7 @@
                       <div class="dropdown-menu" role="menu">
                         <a class="dropdown-item" href="{{url('cabang/edit_cabang/'.$data->id)}}">Edit</a>
                         <a class="dropdown-item" href="{{url('cabang/hapus_cabang/'.$data->id)}}">Hapus</a>
-                        <a class="dropdown-item" href="{{url('transaksi/riwayat_transfer/'.$data->id)}}">Laporan Transfer</a>
-                        <a class="dropdown-item" href="{{url('transaksi/riwayat_tarik_tunai/'.$data->id)}}">Laporan Tarik Tunai</a>
-                        <a class="dropdown-item" href="{{url('transaksi/riwayat_tagihan/'.$data->id)}}">Laporan Tagihan</a>
+                        <a class="dropdown-item" href="{{url('transaksi/riwayat_transaksi/'.$data->id)}}">Laporan</a>
                       </div>
                     </td>
                   </tr>

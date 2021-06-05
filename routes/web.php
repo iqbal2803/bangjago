@@ -70,6 +70,7 @@ Route::post('/daftar_pelanggan/update_daftar_tagihan', 'DaftarPelangganControlle
 Route::get('/daftar_pelanggan/hapus_daftar_tagihan/{id}', 'DaftarPelangganController@hapus_daftar_tagihan')->name('daftar_pelanggan.hapus_daftar_tagihan');
 
 //DATA RIWAYAT TRANSAKSI
+Route::get('/transaksi/riwayat_transaksi/{cabang_id}', 'TransaksiController@riwayat_transaksi')->name('transaksi.riwayat_transaksi');
 Route::get('/transaksi/riwayat_transfer/{cabang_id}', 'TransaksiController@riwayat_transfer')->name('transaksi.riwayat_transfer');
 Route::get('/transaksi/riwayat_tarik_tunai/{cabang_id}', 'TransaksiController@riwayat_tarik_tunai')->name('transaksi.riwayat_tarik_tunai');
 Route::get('/transaksi/riwayat_tagihan/{cabang_id}', 'TransaksiController@riwayat_tagihan')->name('transaksi.riwayat_tagihan');
@@ -80,6 +81,9 @@ Route::get('/transaksi/cetak_invoice_transfer/{nomor_pesanan}', 'TransaksiContro
 Route::get('/transaksi/cetak_invoice_tarik_tunai/{nomor_pesanan}', 'TransaksiController@cetak_invoice_tarik_tunai')->name('transaksi.cetak_invoice_tarik_tunai');
 Route::get('/transaksi/cetak_invoice_tagihan/{nomor_pesanan}', 'TransaksiController@cetak_invoice_tagihan')->name('transaksi.cetak_invoice_tagihan');
 
+
+
+Route::get('/transaksi/cetak_riwayat_transaksi/{cabang_id}/{filter_jenis_transaksi}/{filter_bank}/{filter_tgl}/{filter_search}/{filter_status}', 'TransaksiController@cetak_riwayat_transaksi')->name('transaksi.cetak_riwayat_transaksi');
 Route::get('/transaksi/cetak_riwayat_transaksi_transfer/{cabang_id}/{filter_bank}/{filter_tgl}/{filter_search}/{filter_status}', 'TransaksiController@cetak_riwayat_transaksi_transfer')->name('transaksi.cetak_riwayat_transaksi_transfer');
 Route::get('/transaksi/cetak_riwayat_transaksi_tarik_tunai/{cabang_id}/{filter_bank}/{filter_tgl}/{filter_search}/{filter_status}', 'TransaksiController@cetak_riwayat_transaksi_tarik_tunai')->name('transaksi.cetak_riwayat_transaksi_tarik_tunai');
 Route::get('/transaksi/cetak_riwayat_transaksi_tagihan/{cabang_id}/{filter_bank}/{filter_tgl}/{filter_search}/{filter_status}', 'TransaksiController@cetak_riwayat_transaksi_tagihan')->name('transaksi.cetak_riwayat_transaksi_tagihan');

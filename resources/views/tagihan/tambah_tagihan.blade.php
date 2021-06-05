@@ -76,7 +76,7 @@
                   <!-- /.card-body -->
 
                   <div class="card-footer">
-                    <button type="submit" id="btn_simpan" name="btn_simpan" class="btn btn-primary">Submit</button>
+                    <button type="submit" id="btn_simpan" name="btn_simpan" class="btn btn-primary" disabled="">Submit</button>
                   </div>
                 </form>
               </div>

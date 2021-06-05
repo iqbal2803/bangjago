@@ -23,6 +23,20 @@ class TransaksiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function riwayat_transaksi($cabang_id)
+    {
+        $data['cabang_id'] = $cabang_id;
+        $data['databank'] = Bank::all();
+        $data['datatagihan'] = Tagihan::all();
+        $data['transaksi'] = Transaksi_Bank::where('cabang_id',$cabang_id)->OrderBy('created_at','desc')->get();
+        return view('transaksi.riwayat_transfer',$data);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function riwayat_transfer($cabang_id)
     {
         $data['cabang_id'] = $cabang_id;
@@ -184,6 +198,68 @@ class TransaksiController extends Controller
                     ])->loadView('transaksi.cabang_cetak_invoice_tagihan',$data)->setPaper([20, 0, 164.409, 500]);
         
         return $pdf->download('Cetak Invoice Tagihan.pdf');
+    }
+
+    public function cetak_riwayat_transaksi($cabang_id,$filter_jenis_transaksi,$filter_bank,$filter_tgl,$filter_search,$filter_status)
+    {   
+
+        if($filter_jenis_transaksi=="null"){
+            $transaksi = Transaksi_Bank::where('cabang_id',$cabang_id);
+        }else{
+            $transaksi = Transaksi_Bank::where('cabang_id',$cabang_id)->where('jenis_transaksi',$filter_jenis_transaksi);
+        }
+
+         if($filter_bank!="null"){
+            $transaksi->where('nama_bank',$filter_bank);
+         }
+
+         if($filter_tgl!="null"){
+            $new_date = date("Y-m-d", strtotime($filter_tgl));
+            $transaksi->where('created_at','LIKE','%'.$new_date.'%');
+         }
+
+         if($filter_status!="null"){
+            $transaksi->where('status',$filter_status);
+         }
+
+         if($filter_search!="null"){
+            $replace_search = str_replace(".","",$filter_search);
+            if(is_numeric($replace_search)==1){
+                $filter_search = $replace_search;
+            }
+
+            $columns = ['nomor_rekening', 'nama_pemilik','nominal_transfer','biaya_ongkos','total'];
+
+            $transaksi->where(function($q) use($columns,$filter_search) {
+                $q->where('nomor_transaksi', 'LIKE','%' . $filter_search . '%');
+                foreach ($columns as $column ) {
+                $q->orWhere($column, 'LIKE', '%' . $filter_search . '%');
+                }
+            });
+         }
+
+        $data['cabang']=Cabang::where('id',$cabang_id)->first();
+        $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
+        $profil = Profil::where('id',1)->first();
+        if($profil==null){
+            $data['profile'] =(object)[
+                'id' => "",
+                'logo_profil' => "",
+                'hubungi_kami' => "",
+                'sms' => "",
+                'email' => ""
+            ];
+        }else{
+            $data['profile'] = $profil;
+        }
+
+        $pdf = PDF::setOptions([
+                        'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
+                        'logOutputFile' => storage_path('logs/log.htm'),
+                        'tempDir' => storage_path('logs/')
+                    ])->loadView('transaksi.cabang_cetak_laporan_transaksi',$data);
+        
+        return $pdf->download('Cetak Riwayat Transaksi.pdf');
     }
 
     public function cetak_riwayat_transaksi_transfer($cabang_id,$filter_bank,$filter_tgl,$filter_search,$filter_status)
