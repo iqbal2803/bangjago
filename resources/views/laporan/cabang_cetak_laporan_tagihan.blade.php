@@ -34,7 +34,9 @@
             <table width="100%" border="0">
                 <tr>
                     <td rowspan="2" width="15%">
+                        @if (file_exists(asset('assets_admin/images/profil/'.$profile->logo_profil)))
                         <img loading="lazy"  src="{{ asset('assets_admin/images/profil/'.$profile->logo_profil) }}" height="40" style="display:inline-block;">
+                        @endif
                     </td>
                     <td rowspan="2" width="50%" style="font-size: 1.5rem;" class="strong"><center>Laporan Transaksi Tagihan</center></td>
                     <td rowspan="2" width="25%">
