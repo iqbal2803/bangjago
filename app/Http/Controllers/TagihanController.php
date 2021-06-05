@@ -46,7 +46,7 @@ class TagihanController extends Controller
 
             $imgName = 'img-'. time(). '-'. AppHelper::generateToken(8). '.'. $request->file('logo_tagihan')->getClientOriginalExtension();
             $img = Image::make($request->file('logo_tagihan')->getRealPath());
-            $img->save(storage_path('app/public/assets_admin/images/tagihan/'. $imgName));
+            $img->save(public_path('assets_admin/images/tagihan/'. $imgName));
             $tagihan->logo_tagihan = $imgName;
         }else{
             return back();
