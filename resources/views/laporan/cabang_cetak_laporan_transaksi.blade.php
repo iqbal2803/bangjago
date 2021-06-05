@@ -36,7 +36,7 @@
                     <td rowspan="2" width="15%">
                         <img loading="lazy"  src="{{ asset('assets_admin/images/profil/'.$profile->logo_profil) }}" height="40" style="display:inline-block;">
                     </td>
-                    <td rowspan="2" width="50%" style="font-size: 1.5rem;" class="strong"><center>Laporan Transaksi @php if($jenis_transaksi!="null") {{$jenis_transaksi}} @endphp</center></td>
+                    <td rowspan="2" width="50%" style="font-size: 1.5rem;" class="strong"><center>Laporan Transaksi @if ($jenis_transaksi!="null") {{$jenis_transaksi}} @endif</center></td>
                     <td rowspan="2" width="25%">
                         <b>Cabang :</b> {{$cabang->nama_cabang}}<br>
                         <b>Tanggal :</b> {{tanggal_indonesia(date('Y-m-d'))}}

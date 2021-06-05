@@ -141,33 +141,12 @@
           @endif
           @if(in_array('5', json_decode(Auth::user()->role->permission)))
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('laporan.transaksi')}}" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
-                Laporan
-                <i class="right fas fa-angle-right"></i>
+                Data Cabang
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('laporan.transaksi_transfer')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Laporan Transfer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('laporan.transaksi_tarik_tunai')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Laporan Tarik Tunai</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('laporan.transaksi_tagihan')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Laporan Tagihan</p>
-                </a>
-              </li>
-            </ul>
           </li>
           @endif
           @if(in_array('6', json_decode(Auth::user()->role->permission)))
