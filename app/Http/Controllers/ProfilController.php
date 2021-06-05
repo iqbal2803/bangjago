@@ -18,6 +18,7 @@ class ProfilController extends Controller
         if($profil==null){
             $data['profil'] =(object)[
                 'id' => "",
+                'nama_aplikasi' => "",
                 'alamat' => "",
                 'logo_profil' => "",
                 'hubungi_kami' => "",
@@ -58,6 +59,7 @@ class ProfilController extends Controller
             $profil->logo_profil = $imgName;
         }
 
+        $profil->nama_aplikasi =  $request->nama_aplikasi;
         $profil->alamat =  $request->alamat;
         $profil->hubungi_kami =  $request->hubungi_kami;
         $profil->sms =  $request->sms;
