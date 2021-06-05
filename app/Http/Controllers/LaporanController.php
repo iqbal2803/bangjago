@@ -27,6 +27,7 @@ class LaporanController extends Controller
     public function transaksi()
     {
         $data['databank'] = Bank::all();
+        $data['datatagihan'] = Tagihan::all();
         if(Auth::user()->role->nama_role=='Admin Cabang'){
         $data['transaksi'] = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('status','Selesai')->OrderBy('created_at','desc')->get();
         }else{
