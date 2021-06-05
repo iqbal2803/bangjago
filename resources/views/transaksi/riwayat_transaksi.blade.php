@@ -31,7 +31,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header d-flex">
-          <h3 class="card-title" style="padding-top: 15px;">Riwayat Transaksi Transfer</h3>
+          <h3 class="card-title" style="padding-top: 15px;">Riwayat Transaksi</h3>
 
           <ul class="nav nav-pills ml-auto p-2">
             <li class="nav-item">
