@@ -104,3 +104,18 @@
   </div>
   <!-- /.content-wrapper -->
   @endsection
+  @section('script')
+  <script type="text/javascript">
+    $(document).ready(function() {
+     
+        var table = $('#example1').DataTable( {
+            orderCellsTop: true,
+            fixedHeader: true,
+            "paging":   true,
+            "ordering": false,
+            "info":     true
+        } );
+    } );
+    
+  </script>
+  @endsection

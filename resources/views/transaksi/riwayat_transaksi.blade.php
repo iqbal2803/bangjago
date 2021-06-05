@@ -172,9 +172,9 @@
         var table = $('#example2').DataTable( {
             orderCellsTop: true,
             fixedHeader: true,
-            "paging":   false,
+            "paging":   true,
             "ordering": false,
-            "info":     false
+            "info":     true
         } );
 
 
