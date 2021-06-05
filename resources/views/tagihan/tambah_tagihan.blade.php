@@ -148,9 +148,9 @@ $(document).ready(function(){ // Ketika halaman sudah diload dan siap
 
         if(nextform==0){
             document.getElementById("btn-hapus-form").disabled = true;
+            document.getElementById("btn_simpan").disabled = true;
         }else{
             document.getElementById("btn-hapus-form").disabled = false;
-            document.getElementById("btn_simpan").disabled = true;
         }
     });
 
