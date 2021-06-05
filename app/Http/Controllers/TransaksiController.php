@@ -238,6 +238,7 @@ class TransaksiController extends Controller
             });
          }
 
+        $data['jenis_transaksi'] = $filter_jenis_transaksi;
         $data['cabang']=Cabang::where('id',$cabang_id)->first();
         $data['transaksi'] = $transaksi->OrderBy('created_at','desc')->get();
         $profil = Profil::where('id',1)->first();
