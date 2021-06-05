@@ -43,7 +43,7 @@ class TransaksiController extends Controller
     {
         $data['cabang_id'] = $cabang_id;
         $data['datatagihan'] = Tagihan::all();
-        $data['transaksi'] = Transaksi_Tagihan::where('cabang_id',$cabang_id)->OrderBy('created_at','desc')->get();
+        $data['transaksi'] = Transaksi_Bank::where('cabang_id',$cabang_id)->where('jenis_transaksi','tagihan')->OrderBy('created_at','desc')->get();
         return view('transaksi.riwayat_tagihan',$data);
     }
 
@@ -67,7 +67,7 @@ class TransaksiController extends Controller
 
     public function update_status_tagihan($nomor_transaksi)
     {
-        $bank = Transaksi_Tagihan::where('nomor_transaksi',$nomor_transaksi)->first();
+        $bank = Transaksi_Bank::where('nomor_transaksi',$nomor_transaksi)->first();
         $bank->status =  "Selesai";
         $bank->save();
         
@@ -152,7 +152,7 @@ class TransaksiController extends Controller
 
     public function cetak_invoice_tagihan($nomor_transaksi)
     {
-        $transaksi = Transaksi_Tagihan::where('nomor_transaksi',$nomor_transaksi)->first();
+        $transaksi = Transaksi_Bank::where('nomor_transaksi',$nomor_transaksi)->where('jenis_transaksi','tagihan')->first();
         $data['transaksi'] = $transaksi;
         $data['cabang'] = Cabang::where('id',$transaksi->cabang_id)
                         ->join('provinces as b', 'cabang.provinsi_id', '=', 'b.province_id')
@@ -305,10 +305,10 @@ class TransaksiController extends Controller
     public function cetak_riwayat_transaksi_tagihan($cabang_id,$filter_tagihan,$filter_tgl,$filter_search,$filter_status)
     {   
 
-        $transaksi = Transaksi_Tagihan::where('cabang_id',$cabang_id);
+        $transaksi = Transaksi_Bank::where('cabang_id',$cabang_id)->where('jenis_transaksi','tagihan');
 
          if($filter_tagihan!="null"){
-            $transaksi->where('jenis_tagihan',$filter_tagihan);
+            $transaksi->where('nama_bank',$filter_tagihan);
          }
 
          if($filter_tgl!="null"){
@@ -326,7 +326,7 @@ class TransaksiController extends Controller
                 $filter_search = $replace_search;
             }
             
-            $columns = ['nomor_id', 'nama_pemilik','nominal_tagihan','biaya_ongkos','total'];
+            $columns = ['nomor_rekening', 'nama_pemilik','nominal_transfer','biaya_ongkos','total'];
 
             $transaksi->where(function($q) use($columns,$filter_search) {
                 $q->where('nomor_transaksi', 'LIKE','%' . $filter_search . '%');

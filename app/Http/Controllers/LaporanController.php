@@ -18,6 +18,23 @@ use CoreComponentRepository;
 
 class LaporanController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function transaksi()
+    {
+        $data['databank'] = Bank::all();
+        if(Auth::user()->role->nama_role=='Admin Cabang'){
+        $data['transaksi'] = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('status','Selesai')->OrderBy('created_at','desc')->get();
+        }else{
+        $data['transaksi']=[];
+        }
+        return view('laporan.laporan_transaksi',$data);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -54,6 +71,64 @@ class LaporanController extends Controller
         $data['transaksi']=[];
         }
         return view('laporan.laporan_tagihan',$data);
+    }
+
+    public function cetak_laporan_transaksi($filter_jenis_transaksi,$filter_bank,$filter_tgl,$filter_search)
+    {   
+        if($filter_jenis_transaksi=="null"){
+            $transaksi = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id);
+        }else{
+            $transaksi = Transaksi_Bank::where('cabang_id',Auth::user()->cabang->id)->where('jenis_transaksi',$filter_jenis_transaksi);
+        }
+        if($filter_bank!="null"){
+            $transaksi->where('nama_bank',$filter_bank);
+         }
+
+         if($filter_tgl!="null"){
+            $new_date = date("Y-m-d", strtotime($filter_tgl));
+            $transaksi->where('created_at','LIKE','%'.$new_date.'%');
+         }
+
+         if($filter_search!="null"){
+            $replace_search = str_replace(".","",$filter_search);
+            if(is_numeric($replace_search)==1){
+                $filter_search = $replace_search;
+            }
+
+            $columns = ['nomor_rekening', 'nama_pemilik','nominal_transfer','biaya_ongkos','total'];
+
+            $transaksi->where(function($q) use($columns,$filter_search) {
+                $q->where('nomor_transaksi', 'LIKE','%' . $filter_search . '%');
+                foreach ($columns as $column ) {
+                $q->orWhere($column, 'LIKE', '%' . $filter_search . '%');
+                }
+            });
+         }
+        
+
+        $data['cabang']=Cabang::where('users_id',Auth::user()->id)->first();
+        $data['transaksi'] = $transaksi->where('status','Selesai')->OrderBy('created_at','desc')->get();
+        $profil = Profil::where('id',1)->first();
+        if($profil==null){
+            $data['profile'] =(object)[
+                'id' => "",
+                'alamat' => "",
+                'logo_profil' => "",
+                'hubungi_kami' => "",
+                'sms' => "",
+                'email' => ""
+            ];
+        }else{
+            $data['profile'] = $profil;
+        }
+
+        $pdf = PDF::setOptions([
+                        'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
+                        'logOutputFile' => storage_path('logs/log.htm'),
+                        'tempDir' => storage_path('logs/')
+                    ])->loadView('laporan.cabang_cetak_laporan_transaksi',$data)->setPaper('a4', 'landscape');
+        
+        return $pdf->download('Cetak Laporan Transaksi.pdf');
     }
 
     public function cetak_laporan_transaksi_transfer($filter_bank,$filter_tgl,$filter_search)

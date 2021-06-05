@@ -66,12 +66,12 @@
             <tr>
               <td>Jenis Tagihan</td>
               <td>:</td>
-              <td>{{$transaksi->jenis_tagihan}}</td>
+              <td>{{$transaksi->nama_bank}}</td>
             </tr>
             <tr>
               <td>Nomor ID</td>
               <td>:</td>
-              <td>{{$transaksi->nomor_id}}</td>
+             <td>{{$transaksi->nomor_rekening}}</td>
             </tr>
             <tr>
               <td>Nama ID</td>
@@ -81,7 +81,7 @@
             <tr>
               <td>Jumlah Tagihan</td>
               <td>:</td>
-              <td>Rp{{format_price($transaksi->nominal_tagihan)}}</td>
+              <td>Rp{{format_price($transaksi->nominal_transfer)}}</td>
             </tr>
             <tr>
               <td class="bordertabel">Biaya Ongkos</td>
