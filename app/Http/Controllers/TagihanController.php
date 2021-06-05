@@ -44,8 +44,6 @@ class TagihanController extends Controller
                 return redirect()->back()->with('info', config('app.message_max_img_size'));
             }
 
-
-            dd($request->file('logo_tagihan'));
             $imgName = 'img-'. time(). '-'. AppHelper::generateToken(8). '.'. $request->file('logo_tagihan')->getClientOriginalExtension();
             $img = Image::make($request->file('logo_tagihan')->getRealPath());
             $img->save(public_path('assets_admin/images/tagihan/'. $imgName));
