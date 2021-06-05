@@ -29,7 +29,7 @@ class TransaksiController extends Controller
         $data['databank'] = Bank::all();
         $data['datatagihan'] = Tagihan::all();
         $data['transaksi'] = Transaksi_Bank::where('cabang_id',$cabang_id)->OrderBy('created_at','desc')->get();
-        return view('transaksi.riwayat_transfer',$data);
+        return view('transaksi.riwayat_transaksi',$data);
     }
 
     /**
