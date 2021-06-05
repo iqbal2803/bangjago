@@ -164,25 +164,28 @@ class TransaksiController extends Controller
             //         ]
             //     ], 400);
             // }
+
             $data = [
             'cabang_id' => $request->get('cabang_id'),
+            'jenis_transaksi' => 'tagihan',
             'nomor_transaksi' => $request->get('nomor_transaksi'),
-            'jenis_tagihan' => $request->get('jenis_tagihan'),
-            'nomor_id' => $request->get('nomor_id'),
+            'nama_bank' => $request->get('jenis_tagihan'),
+            'nomor_rekening' => $request->get('nomor_id'),
             'nama_pemilik' => $request->get('nama_pemilik'),
-            'nominal_tagihan' => $request->get('nominal_tagihan'),
+            'nominal_transfer' => $request->get('nominal_tagihan'),
             'biaya_ongkos' => $request->get('biaya_ongkos'),
             'total' => $request->get('total'),
             'status' => 'Pending'
             ];
 
-            Transaksi_Tagihan::create($data);
+            Transaksi_Bank::create($data);
 
              return response()->json([
                 "error" => false,
                 "message" => "Data berhasil dibuat"
                 
             ]);
+
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 
             return response()->json(['token_expired'], $e->getStatusCode());
@@ -262,11 +265,12 @@ class TransaksiController extends Controller
                 $arrayToPush = [
                     'id' => $item->id,
                     'cabang_id' => $item->cabang_id,
+                    'jenis_transaksi' => $item->jenis_transaksi,
                     'nomor_transaksi' => $item->nomor_transaksi,
-                    'jenis_tagihan' => $item->jenis_tagihan,
-                    'nomor_id' => $item->nomor_id,
+                    'jenis_tagihan' => $item->nama_bank,
+                    'nomor_id' => $item->nomor_rekening,
                     'nama_pemilik' => $item->nama_pemilik,
-                    'nominal_tagihan' => $item->nominal_tagihan,
+                    'nominal_tagihan' => $item->nominal_transfer,
                     'biaya_ongkos' => $item->biaya_ongkos,
                     'total' => $item->total,
                     'status' => $item->status,
