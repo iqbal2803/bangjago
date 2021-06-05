@@ -69,6 +69,7 @@
                   <thead >
                   <tr>
                     <th>No</th>
+                    <th>Jenis Transaksi</th>
                     <th>Nomor Pesanan</th>
                     <th>Tanggal</th>
                     <th>Nama Bank</th>
@@ -86,6 +87,7 @@
                   @foreach ($transaksi as $data)
                   <tr>
                     <td>{{$no}}</td>
+                    <td>{{ $data->jenis_transaksi}}</td>
                     <td>{{ $data->nomor_transaksi}}</td>
                     <td>{{ Carbon\Carbon::parse($data->created_at)->format('d-m-Y H:i:s') }}</td>
                     <td>{{ $data->nama_bank}}</td>
