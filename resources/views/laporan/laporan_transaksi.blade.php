@@ -73,13 +73,12 @@
                     <th>Jenis Transaksi</th>
                     <th>Nomor Pesanan</th>
                     <th>Tanggal</th>
-                    <th>Nama Bank</th>
-                    <th>Nomor Rekening</th>
-                    <th>Nama Pemilik Rekening</th>
-                    <th>Nominal Transfer</th>
+                    <th>Nama Bank/Tagihan</th>
+                    <th>Nomor Rekening/ID Pelanggan</th>
+                    <th>Nama Pemilik Rekening/ID Tagihan</th>
+                    <th>Nominal Transfer/Tagihan</th>
                     <th>Biaya Ongkos</th>
                     <th>Total</th>
-                    <th>Status</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -96,7 +95,6 @@
                     <td>{{ format_price($data->nominal_transfer)}}</td>
                     <td>{{ format_price($data->biaya_ongkos)}}</td>
                     <td>{{ format_price($data->total)}}</td>
-                    <td>{{ $data->status}}</td>
                   </tr>
                   @php $no++; @endphp
                   @endforeach
