@@ -85,7 +85,7 @@
                     <td>{{ $data->nama_bank}}</td>
                     <td>{{ $data->nomor_rekening}}</td>
                     <td>{{ $data->nama_pemilik}}</td>
-                    <td>{{ format_price($data->nominal_tagihan)}}</td>
+                    <td>{{ format_price($data->nominal_transfer)}}</td>
                     <td>{{ format_price($data->biaya_ongkos)}}</td>
                     <td>{{ format_price($data->total)}}</td>
                     <td>{{ $data->status}}</td>
