@@ -35,6 +35,14 @@
 
           <ul class="nav nav-pills ml-auto p-2">
             <li class="nav-item">
+            <select class="form-control filter-status" data-column="10"  name="filter_status" id="filter_status">
+                <option value="">Pilih Status</option>
+                <option value="Pending">Pending</option>
+                <option value="Selesai">Selesai</option>
+            </select>
+            </li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="nav-item">
             <input type="hidden" name="cabang_id" id="cabang_id" value="{{$cabang_id}}">
             <select class="form-control filter-jenis-transaksi" data-column="1"  name="filter_jenis_transaksi" id="filter_jenis_transaksi">
                 <option value="">Pilih Jenis Transaksi</option>
@@ -78,6 +86,7 @@
                     <th>Nominal Transfer/Tagihan</th>
                     <th>Biaya Ongkos</th>
                     <th>Total</th>
+                    <th>Status</th>
                     @if(Auth::user()->role->nama_role=='Admin Cabang')<th>Aksi</th>@endif
                   </tr>
                   </thead>
@@ -95,6 +104,7 @@
                     <td>{{ format_price($data->nominal_transfer)}}</td>
                     <td>{{ format_price($data->biaya_ongkos)}}</td>
                     <td>{{ format_price($data->total)}}</td>
+                    <td>{{ $data->status}}</td>
                      @if(Auth::user()->role->nama_role=='Admin Cabang')
                      <td>
                       @if($data->status=='Pending')
