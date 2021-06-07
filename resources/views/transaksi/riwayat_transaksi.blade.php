@@ -240,10 +240,11 @@
             var filter_jenis_transaksi = "null";
             var filter_status ="null";
             var filter_search ="null";
-            var dt_bank,dt_tgl,dt_jenis_transaksi,dt_search,cek="";
+            var dt_status,dt_bank,dt_tgl,dt_jenis_transaksi,dt_search,cek="";
             dt_bank = $('#filter_bank').val();
             dt_tgl = $('#filter_tgl').val();
             dt_jenis_transaksi = $('#filter_jenis_transaksi').val();
+            dt_status = $('#filter_status').val();
             dt_search = table.search();
 
             if(dt_tgl!=""){
@@ -268,6 +269,10 @@
 
             if(dt_search!=""){
                filter_search=dt_search;
+            }
+
+            if(dt_status!=""){
+               filter_status=dt_status;
             }
             //window.open('https://yoururl.com', '_blank');
             var data = filter_bank+"/"+filter_tgl+"/"+filter_search+"/"+filter_status;
