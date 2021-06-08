@@ -39,7 +39,7 @@
                 <form role="form">
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-sm-1">
+                      <div class="col-sm-2">
                         <!-- select -->
                         <div class="form-group">
                           <label>Nama Role</label>

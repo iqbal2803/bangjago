@@ -58,7 +58,7 @@ class RoleController extends Controller
     public function update_role(Request $request,$id)
     {
         $role = Role::where('id',$id)->first();
-        $role->nama_role =  $request->nama_role;
+        //$role->nama_role =  $request->nama_role;
         $role->permission =  json_encode($request->permission);
         $role->save();
         
