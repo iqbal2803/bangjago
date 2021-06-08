@@ -32,7 +32,7 @@
               <!-- general form elements -->
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title"><b>Edit Data Role</b></h3>
+                  <h3 class="card-title"><b>Lihat Data Role</b></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
