@@ -2,7 +2,7 @@
   <aside class="main-sidebar sidebar-dark-orange elevation-4">
     <!-- Brand Logo -->
     <a class="brand-link">
-      @if(file_exists(asset('assets_admin/images/profil/'.$profile->logo_profil)))
+      @if (file_exists(public_path('assets_admin/images/profil/'.$profile->logo_profil)))
       <img src="{{ asset('assets_admin/images/profil/'.$profile->logo_profil) }}" alt="BangJago Logo" class="brand-image elevation-3" style="opacity: .8">
       @endif
       <span class="brand-text font-weight-light">Bang Jago</span>
