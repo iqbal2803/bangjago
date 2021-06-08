@@ -30,7 +30,7 @@
           <h3 class="card-title">Daftar  Hak Akses</h3>
 
           <div class="card-tools">
-            <a href="{{route('role.tambah_role')}}"><button type="submit" class="btn btn-primary">Tambah Data</button></a>
+            
           </div>
         </div>
         <div class="card-body">
@@ -54,20 +54,12 @@
                       </button>
                       <div class="dropdown-menu" role="menu">
                         <a class="dropdown-item" href="{{url('role/edit_role/'.$data->id)}}">Edit</a>
-                        <a class="dropdown-item" href="{{url('role/hapus_role/'.$data->id)}}">Hapus</a>
                       </div>
                     </td>
                   </tr>
                   @php $no++; @endphp
                   @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Hak Akses</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->
