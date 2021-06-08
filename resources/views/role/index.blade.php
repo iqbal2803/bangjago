@@ -49,7 +49,7 @@
                     <td>{{$no}}</td>
                     <td>{{ $data->nama_role}}</td>
                     <td>
-                      <a href="{{url('role/edit_role/'.$data->id)}}"><button class="btn btn-info btn-flat">Edit</button></a>
+                      <a href="{{url('role/edit_role/'.$data->id)}}"><button class="btn btn-info btn-flat">Lihat</button></a>
                     </td>
                   </tr>
                   @php $no++; @endphp
