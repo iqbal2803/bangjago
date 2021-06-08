@@ -30,7 +30,7 @@
           <h3 class="card-title">Daftar  Hak Akses</h3>
 
           <div class="card-tools">
-            
+
           </div>
         </div>
         <div class="card-body">
@@ -49,12 +49,7 @@
                     <td>{{$no}}</td>
                     <td>{{ $data->nama_role}}</td>
                     <td>
-                      <button type="button" class="btn btn-info btn-flat dropdown-toggle dropdown-icon" data-toggle="dropdown">Aksi
-                        <span class="sr-only">Toggle Dropdown</span>
-                      </button>
-                      <div class="dropdown-menu" role="menu">
-                        <a class="dropdown-item" href="{{url('role/edit_role/'.$data->id)}}">Edit</a>
-                      </div>
+                      <a href="{{url('role/edit_role/'.$data->id)}}"><button class="btn btn-info btn-flat">Edit</button></a>
                     </td>
                   </tr>
                   @php $no++; @endphp
