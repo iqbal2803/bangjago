@@ -72,7 +72,7 @@
                       </div>
                     </div>
                     @endif
-                    @if($role->nama_role=='Admin Cabang' || $role->nama_role=='Pemilik')
+                    @if($role->nama_role=='Pemilik')
                     <div class="row">
                       <div class="col-sm-3" style="padding-top: 10px;padding-left: 30px;">
                         <div class="custom-control custom-switch">
