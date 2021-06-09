@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Models\Role;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -29,13 +30,20 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = request(['email', 'password']);
+        $dt = User::where('email',$request->email)
+                        ->join('role as b', 'users.role_id', '=', 'b.id')
+                        ->select(
+                        'users.*',
+                        'b.nama_role'
+                        )
+                        ->first();
+        if ($dt->role->nama_role!='Admin Cabang') {
+            return response()->json(['message' => 'Username atau password anda salah.'], 500);
+        }
 
         if (! $token = auth('api')->attempt($credentials)) {
             return response()->json(['message' => 'Username atau password anda salah.'], 500);
         }
-
-        //$role = Role::where('id',auth()->user()->role_id);
-
         //echo $role;
         return $this->respondWithToken($token);
     }
