@@ -18,8 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 Route::group(['namespace' => 'api'], function () {
-	
-	Route::get('getProfil', 'ProfilController@getProfil');
+
+	Route::group(['prefix' => 'profil'], function () {
+			Route::get('getProfil', 'ProfilController@getProfil');
+	});
 
 	Route::group(['prefix' => 'auth'], function () {
 		Route::post('login', 'AuthController@login');
@@ -56,6 +58,8 @@ Route::group(['namespace' => 'api'], function () {
 			Route::post('getTransaksiBankByNomorTransaksi', 'TransaksiController@getTransaksiBankByNomorTransaksi');
 			Route::post('getTransaksiTagihanByNomorTransaksi', 'TransaksiController@getTransaksiTagihanByNomorTransaksi');
 		});
+
+		
 	});
 
 
