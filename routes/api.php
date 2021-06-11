@@ -18,14 +18,14 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 Route::group(['namespace' => 'api'], function () {
+	
+	Route::get('getProfil', 'ProfilController@getProfil');
 
-	
-	Route::get('me', 'AuthController@me');
-	
 	Route::group(['prefix' => 'auth'], function () {
 		Route::post('login', 'AuthController@login');
 	    Route::post('logout', 'AuthController@logout');
 	    Route::post('refresh', 'AuthController@refresh');
+	    Route::get('me', 'AuthController@me');
 	});
 
 	Route::group(['middleware' => 'jwt.verify'], function () {
@@ -55,10 +55,6 @@ Route::group(['namespace' => 'api'], function () {
 			Route::post('bayar_tagihan', 'TransaksiController@createTransaksiBayarTagihan');
 			Route::post('getTransaksiBankByNomorTransaksi', 'TransaksiController@getTransaksiBankByNomorTransaksi');
 			Route::post('getTransaksiTagihanByNomorTransaksi', 'TransaksiController@getTransaksiTagihanByNomorTransaksi');
-		});
-
-		Route::group(['prefix' => 'profil'], function () {
-			Route::get('getProfil', 'ProfilController@getProfil');
 		});
 	});
 
