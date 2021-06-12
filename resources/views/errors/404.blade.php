@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
 
   <!-- Custom stlylesheet -->
-  <link type="text/css" rel="stylesheet" href="http://bangjago.revoapps.net/public/css/style-error.css" />
+  <link type="text/css" rel="stylesheet" href="https://bangjagoaceh.com/public/css/style-error.css" />
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,7 +34,7 @@
       </div>
       <h2>Page not found</h2>
       <p>We could not find the page you were looking for</p>
-      <a href="http://bangjago.revoapps.net/public/">home page</a>
+      <a href="https://bangjagoaceh.com/public/">home page</a>
     </div>
   </div>
 
